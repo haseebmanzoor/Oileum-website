@@ -1,216 +1,155 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  Award,
-  Globe,
-  Users,
-  TrendingUp,
-  CheckCircle,
-  ArrowRight,
-  Play,
-  Sparkles,
-  Target,
-  Lightbulb,
-} from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 
-function AboutUs() {
-  const [activeTab, setActiveTab] = useState("overview");
-  const [counters, setCounters] = useState({
-    years: 0,
-    countries: 0,
-    projects: 0,
-    satisfaction: 0,
-  });
-  const aboutRef = useRef(null);
+// Example slides with background images
+const slides = [
+  {
+    title: "Powering Progress with Innovation",
+    subtitle: "Oil & Gas Infrastructure",
+    description:
+      "From refineries to pipelines, we deliver reliable engineering solutions that fuel industries worldwide.",
+    stats: { projects: "500+", countries: "5", experience: "40+" },
+    cta: "Explore Our Projects",
+    background: "/logos/refinery-night.jpg",
+  },
+  {
+    title: "Shaping a Sustainable Future",
+    subtitle: "Solar & Wind Energy",
+    description:
+      "Harnessing clean energy with advanced solar and wind projects to power the next generation.",
+    stats: { projects: "120+", countries: "3", experience: "15+" },
+    cta: "View Renewable Initiatives",
+    background: "/logos/solar-wind.jpg",
+  },
+  {
+    title: "Reliable Energy for Communities",
+    subtitle: "Natural Gas & Power Plants",
+    description:
+      "Supplying safe, efficient, and sustainable power through state-of-the-art LNG plants and infrastructure.",
+    stats: { projects: "80+", countries: "4", experience: "25+" },
+    cta: "Discover Our Impact",
+    background: "/logos/lng-plant.jpg",
+  },
+];
+
+const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          const animateCounter = (target, key, duration = 2000) => {
-            const increment = target / (duration / 16);
-            let current = 0;
-            const timer = setInterval(() => {
-              current += increment;
-              if (current >= target) {
-                current = target;
-                clearInterval(timer);
-              }
-              setCounters((prev) => ({ ...prev, [key]: Math.floor(current) }));
-            }, 16);
-          };
-          animateCounter(40, "years");
-          animateCounter(5, "countries");
-          animateCounter(500, "projects");
-          animateCounter(95, "satisfaction");
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (aboutRef.current) observer.observe(aboutRef.current);
-    return () => {
-      if (aboutRef.current) observer.unobserve(aboutRef.current);
-    };
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(interval);
   }, []);
 
-  const stats = [
-    {
-      icon: Award,
-      number: `${counters.years}+`,
-      label: "Years Experience",
-      gradient: "from-orange-400 to-orange-500",
-    },
-    {
-      icon: Globe,
-      number: `${counters.countries}`,
-      label: "Countries",
-      gradient: "from-blue-400 to-blue-500",
-    },
-    {
-      icon: Users,
-      number: `${counters.projects}+`,
-      label: "Projects Delivered",
-      gradient: "from-emerald-400 to-emerald-500",
-    },
-    {
-      icon: TrendingUp,
-      number: `${counters.satisfaction}%`,
-      label: "Client Satisfaction",
-      gradient: "from-purple-400 to-purple-500",
-    },
-  ];
-
-  const achievements = [
-    { icon: Award, text: "Leading EPC Company in MENA & South Asia" },
-    { icon: Globe, text: "Backed by UDKS global construction group" },
-    { icon: Target, text: "Specialized in complex industrial projects" },
-    {
-      icon: CheckCircle,
-      text: "Proven track record in challenging environments",
-    },
-    { icon: Sparkles, text: "ISO certified quality management systems" },
-    { icon: TrendingUp, text: "Award-winning safety performance" },
-  ];
-
-  const tabs = [
-    { id: "overview", label: "Overview", icon: Globe },
-    { id: "history", label: "Our History", icon: Award },
-    { id: "mission", label: "Mission & Vision", icon: Target },
-  ];
-
-  const tabContents = {
-    overview: (
-      <>
-        <div className="space-y-4 relative z-10">
-          <p className="text-slate-300 text-lg leading-relaxed">
-            OILEUM is a UAE-based industrial services company specializing in
-            downstream oil & gas solutions across MENA & South Asia.
-          </p>
-          <p className="text-slate-400 leading-relaxed">
-            Our comprehensive approach combines cutting-edge technology with
-            decades of expertise to deliver exceptional results in the most
-            challenging environments.
-          </p>
-        </div>
-
-        {/* Floating Geometric Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-2 h-32 bg-gradient-to-b from-orange-400/50 to-transparent opacity-60 animate-pulse" />
-          <div className="absolute top-40 right-20 w-2 h-24 bg-gradient-to-b from-amber-400/40 to-transparent opacity-40 animate-pulse animation-delay-1000" />
-          <div className="absolute bottom-32 left-20 w-2 h-28 bg-gradient-to-t from-orange-400/45 to-transparent opacity-50 animate-pulse animation-delay-2000" />
-          <div className="absolute bottom-20 right-10 w-2 h-20 bg-gradient-to-t from-amber-400/50 to-transparent opacity-55 animate-pulse animation-delay-500" />
-        </div>
-
-        {/* Premium Particle Effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-orange-400/40 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animation: `twinkle 4s infinite ease-in-out`,
-              }}
-            />
-          ))}
-        </div>
-      </>
-    ),
-    history: (
-      <div className="space-y-4">
-        <p className="text-slate-300 text-lg leading-relaxed">
-          Started in 1983, OILEUM has evolved into one of the most dynamic EPC
-          companies across MENA & South Asia.
-        </p>
-        <p className="text-slate-400 leading-relaxed">
-          From humble beginnings to becoming a regional powerhouse, our journey
-          reflects continuous innovation and unwavering commitment to
-          excellence.
-        </p>
-      </div>
-    ),
-    mission: (
-      <div className="space-y-4">
-        <p className="text-slate-300 text-lg leading-relaxed">
-          We deliver world-class engineering, procurement, and construction
-          services driving industrial progress in MENA & South Asia.
-        </p>
-        <p className="text-slate-400 leading-relaxed">
-          Our vision is to be the preferred partner for transformative energy
-          infrastructure projects that shape the future of the region.
-        </p>
-      </div>
-    ),
+  // Mouse move parallax
+  const handleMouseMove = (e) => {
+    setMousePosition({
+      x: (e.clientX / window.innerWidth - 0.5) * 2,
+      y: (e.clientY / window.innerHeight - 0.5) * 2,
+    });
   };
+
+  const currentSlideData = slides[currentSlide];
 
   return (
     <section
-      ref={aboutRef}
-      className="relative py-24 bg-slate-900 overflow-hidden"
+      className="relative h-screen overflow-hidden bg-slate-900"
+      onMouseMove={handleMouseMove}
     >
-      {/* Static Background Image instead of video */}
-      <div className="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1581094794329-c8112a89af12"
-          alt="Industrial Energy Infrastructure"
-          className="absolute inset-0 w-full h-full object-cover"
+      {/* Background image per slide */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${currentSlideData.background})`,
+            transform: `translate(${mousePosition.x * 15}px, ${
+              mousePosition.y * 15
+            }px)`,
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-800/85 to-slate-900/95"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30"></div>
+      </AnimatePresence>
+
+      {/* Gradient overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/70 to-slate-900/40"></div>
+
+      {/* Animated particle accents */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-orange-400 rounded-full"
+            initial={{
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              y: [null, Math.random() * window.innerHeight],
+              opacity: [0.3, 1, 0.3],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
       </div>
 
-      {/* Main Content */}
-      <div className="relative max-w-7xl mx-auto px-8">
-        {/* ... Keep all headers, grids, tabs, achievements, stats, CTA as before ... */}
-      </div>
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 md:pt-48">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 60 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+              {currentSlideData.title}
+            </h1>
+            <h2 className="text-2xl md:text-3xl font-semibold text-orange-400 mb-4">
+              {currentSlideData.subtitle}
+            </h2>
+            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-xl">
+              {currentSlideData.description}
+            </p>
 
-      <style jsx>{`
-        @keyframes twinkle {
-          0%,
-          100% {
-            opacity: 0.2;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.2);
-          }
-        }
-        .animation-delay-1000 {
-          animation-delay: 1s;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-500 {
-          animation-delay: 0.5s;
-        }
-      `}</style>
+            {/* Stats */}
+            <div className="flex flex-wrap gap-8 mb-10">
+              {Object.entries(currentSlideData.stats).map(([key, value]) => (
+                <div key={key}>
+                  <div className="text-3xl md:text-4xl font-bold text-white">
+                    {value}
+                  </div>
+                  <div className="text-sm uppercase text-slate-400">{key}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <motion.a
+              href="#projects"
+              className="inline-flex items-center px-6 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {currentSlideData.cta} <ChevronRight className="ml-2 h-5 w-5" />
+            </motion.a>
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </section>
   );
-}
+};
 
-export default AboutUs;
+export default Hero;
