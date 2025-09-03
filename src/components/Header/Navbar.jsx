@@ -1,13 +1,14 @@
-// src/components/Navbar.jsx
+// src/components/Header/Navbar.jsx
 import React, { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+
 import Logo from "./Logo";
 import NavItem from "./NavItem";
 import MobileMenu from "./MobileMenu";
 
-// ✅ Config (easy to update later)
 const CONTACT_INFO = {
-  phone: "+1 (555) 123-4567",
+  phone: "+971 4 123-4567",
   email: "info@oileum.com",
 };
 
@@ -15,6 +16,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -22,63 +24,141 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // ✅ Nav items data
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+  }, [location]);
+
   const navItems = [
-    { name: "About", href: "#about" },
+    { name: "Home", href: "/", isActive: location.pathname === "/" },
+
     {
-      name: "Services",
+      name: "About Us",
+      href: "/about",
+      isActive: location.pathname.startsWith("/about"),
       dropdown: [
         {
-          name: "EPC Solutions",
-          desc: "Complete project delivery",
-          href: "#epc",
+          name: "Company Overview",
+          desc: "Who we are",
+          href: "/about#overview",
         },
+        { name: "Our Legacy", desc: "Our journey", href: "/about#legacy" },
+        {
+          name: "Why Choose Us",
+          desc: "Our core values",
+          href: "/about#learn-more",
+        },
+      ],
+    },
+
+    {
+      name: "Services",
+      href: "/services",
+      isActive: location.pathname.startsWith("/services"),
+      dropdown: [
         {
           name: "Engineering",
-          desc: "Advanced design solutions",
-          href: "#engineering",
+          desc: "Design solutions",
+          href: "/services/engineering",
         },
         {
           name: "Procurement",
-          desc: "Strategic sourcing",
-          href: "#procurement",
+          desc: "Supply chain",
+          href: "/services/procurement",
         },
         {
           name: "Construction",
-          desc: "World-class execution",
-          href: "#construction",
+          desc: "Field execution",
+          href: "/services/construction",
+        },
+        {
+          name: "Chemical Solutions",
+          desc: "Treatment programs",
+          href: "/services/chemical-solutions",
         },
         {
           name: "Operations & Maintenance",
-          desc: "Lifecycle support",
-          href: "#om",
+          desc: "Plant ops",
+          href: "/services/operations-maintenance",
+        },
+        {
+          name: "Heat Exchanger Services",
+          desc: "Retubing & manufacturing",
+          href: "/services/heat-exchanger",
         },
       ],
     },
-    { name: "Projects", href: "#projects" },
+
     {
-      name: "Company",
+      name: "Projects",
+      href: "/projects",
+      isActive: location.pathname.startsWith("/projects"),
       dropdown: [
-        { name: "Leadership Team", desc: "Meet our experts", href: "#team" },
         {
-          name: "Certifications",
-          desc: "ISO & safety standards",
-          href: "#certifications",
+          name: "Oil & Gas",
+          desc: "Refinery & pipeline",
+          href: "/projects/oil-gas",
         },
         {
-          name: "News & Insights",
-          desc: "Industry thought leadership",
-          href: "#news",
+          name: "Infrastructure",
+          desc: "Industrial construction",
+          href: "/projects/infrastructure",
         },
-        { name: "Careers", desc: "Join our team", href: "#careers" },
         {
-          name: "Sustainability",
-          desc: "Our ESG commitment",
-          href: "#sustainability",
+          name: "Energy Solutions",
+          desc: "Power projects",
+          href: "/projects/energy",
+        },
+        {
+          name: "Case Studies",
+          desc: "Successful deliveries",
+          href: "/projects/case-studies",
         },
       ],
     },
-    { name: "Contact", href: "#contact" },
+
+    {
+      name: "Sustainability",
+      href: "/sustainability",
+      isActive: location.pathname.startsWith("/sustainability"),
+      dropdown: [
+        {
+          name: "HSE Practices",
+          desc: "Health & Safety",
+          href: "/sustainability/hse",
+        },
+        {
+          name: "Community Impact",
+          desc: "Community work",
+          href: "/sustainability/community",
+        },
+        {
+          name: "Green Initiatives",
+          desc: "Environmental",
+          href: "/sustainability/initiatives",
+        },
+      ],
+    },
+
+    {
+      name: "Careers",
+      href: "/careers",
+      isActive: location.pathname.startsWith("/careers"),
+      dropdown: [
+        {
+          name: "Openings",
+          desc: "Available positions",
+          href: "/careers/openings",
+        },
+        { name: "Life at Oileum", desc: "Culture", href: "/careers/culture" },
+      ],
+    },
+
+    {
+      name: "Contact",
+      href: "/contact",
+      isActive: location.pathname === "/contact",
+    },
   ];
 
   return (
@@ -87,16 +167,16 @@ const Navbar = () => {
       aria-label="Main navigation"
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-slate-900/98 backdrop-blur-xl shadow-2xl border-b border-slate-700/50"
-          : "bg-slate-900/90 backdrop-blur-md"
+          ? "bg-[#181c2c] shadow-2xl border-b border-slate-700/50"
+          : "bg-[#181c2c]"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-18 lg:h-20">
-          {/* ✅ Real Logo */}
-          <Logo />
+          <Link to="/" className="flex-shrink-0">
+            <Logo />
+          </Link>
 
-          {/* ✅ Desktop Nav */}
           <div className="hidden lg:block ml-10">
             <div className="flex items-center space-x-1">
               {navItems.map((item, index) => (
@@ -111,15 +191,15 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* ✅ CTA button (desktop only) */}
           <div className="hidden lg:block">
-            <button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-8 py-3 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:ring-2 focus:ring-orange-500 relative overflow-hidden group">
-              <span className="relative z-10">Request Proposal</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-            </button>
+            <Link to="/contact?inquiry=proposal">
+              <button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-8 py-3 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:ring-2 focus:ring-orange-500 relative overflow-hidden group">
+                <span className="relative z-10">Request Proposal</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              </button>
+            </Link>
           </div>
 
-          {/* ✅ Mobile Toggle */}
           <div className="lg:hidden">
             <button
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
@@ -135,7 +215,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* ✅ Mobile Menu Component */}
         <MobileMenu
           navItems={navItems}
           mobileMenuOpen={mobileMenuOpen}

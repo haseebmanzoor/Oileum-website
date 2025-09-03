@@ -1,5 +1,9 @@
+// src/components/Header/Logo.jsx
+import React from "react";
+import { Link } from "react-router-dom";
+
 const Logo = () => (
-  <a href="/" className="flex items-center space-x-3">
+  <Link to="/" className="flex items-center space-x-3">
     <img
       src="/logos/oileum-logo.jpg"
       alt="Oileum Logo"
@@ -13,6 +17,7 @@ const Logo = () => (
         ENERGY SOLUTIONS
       </span>
     </div>
-  </a>
+  </Link>
 );
+
 export default Logo;

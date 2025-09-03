@@ -1,152 +1,165 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
-
-// Example slides with background images
-const slides = [
-  {
-    title: "Powering Progress with Innovation",
-    subtitle: "Oil & Gas Infrastructure",
-    description:
-      "From refineries to pipelines, we deliver reliable engineering solutions that fuel industries worldwide.",
-    stats: { projects: "500+", countries: "5", experience: "40+" },
-    cta: "Explore Our Projects",
-    background: "/logos/refinery-night.jpg",
-  },
-  {
-    title: "Shaping a Sustainable Future",
-    subtitle: "Solar & Wind Energy",
-    description:
-      "Harnessing clean energy with advanced solar and wind projects to power the next generation.",
-    stats: { projects: "120+", countries: "3", experience: "15+" },
-    cta: "View Renewable Initiatives",
-    background: "/logos/solar-wind.jpg",
-  },
-  {
-    title: "Reliable Energy for Communities",
-    subtitle: "Natural Gas & Power Plants",
-    description:
-      "Supplying safe, efficient, and sustainable power through state-of-the-art LNG plants and infrastructure.",
-    stats: { projects: "80+", countries: "4", experience: "25+" },
-    cta: "Discover Our Impact",
-    background: "/logos/lng-plant.jpg",
-  },
-];
+import { ChevronRight, ChevronLeft, Play } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const slides = [
+    {
+      title: "Transforming the Art of Engineering",
+      subtitle: "End-to-End Engineering Solutions",
+      description:
+        "Oileum is proud to be a leading EPC company in the energy sector of MENA & South Asia, delivering world-class engineering solutions across downstream oil & gas infrastructure.",
+      cta: { text: "Explore Our Services", link: "/services" },
+      secondaryCta: { text: "Company Overview", link: "/about#overview" },
+      background: "/logos/refinery-night.jpg",
+      overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
+    },
+    {
+      title: "Excellence in Industrial Services",
+      subtitle: "Trusted Across MENA & South Asia",
+      description:
+        "With strong operational presence in Iraq, Libya, Qatar, Saudi Arabia and Pakistan, we deliver high-integrity engineering, procurement, and technical services for refineries and energy infrastructure.",
+      cta: { text: "View Our Projects", link: "/projects" },
+      secondaryCta: { text: "Learn More", link: "/about#learn-more" },
+      background: "/logos/solar-wind.jpg",
+      overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
+    },
+    {
+      title: "Innovation Meets Experience",
+      subtitle: "Four Decades of Engineering Excellence",
+      description:
+        "Backed by decades of field expertise and commitment to quality, Oileum is trusted for driving results in the most challenging environments across the energy sector.",
+      cta: { text: "About Oileum", link: "/about" },
+      secondaryCta: { text: "Our Legacy", link: "/about#legacy" },
+      background: "/logos/lng-plant.jpg",
+      overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
+    },
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 8000);
     return () => clearInterval(interval);
   }, []);
-
-  // Mouse move parallax
-  const handleMouseMove = (e) => {
-    setMousePosition({
-      x: (e.clientX / window.innerWidth - 0.5) * 2,
-      y: (e.clientY / window.innerHeight - 0.5) * 2,
-    });
-  };
 
   const currentSlideData = slides[currentSlide];
 
   return (
-    <section
-      className="relative h-screen overflow-hidden bg-slate-900"
-      onMouseMove={handleMouseMove}
-    >
-      {/* Background image per slide */}
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Slides */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${currentSlideData.background})`,
-            transform: `translate(${mousePosition.x * 15}px, ${
-              mousePosition.y * 15
-            }px)`,
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2 }}
-        />
+          className="absolute inset-0"
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${currentSlideData.background})` }}
+          />
+          <div
+            className={`absolute inset-0 bg-gradient-to-r ${currentSlideData.overlay}`}
+          />
+        </motion.div>
       </AnimatePresence>
 
-      {/* Gradient overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/70 to-slate-900/40"></div>
-
-      {/* Animated particle accents */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-orange-400 rounded-full"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              y: [null, Math.random() * window.innerHeight],
-              opacity: [0.3, 1, 0.3],
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
-
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-40 md:pt-48">
-        <AnimatePresence mode="wait">
+      <div className="relative z-10 h-full flex items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 60 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="max-w-3xl space-y-8"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+            {/* Subtitle */}
+            <div className="inline-flex items-center px-5 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg">
+              <span className="text-sm font-semibold text-orange-400">
+                {currentSlideData.subtitle}
+              </span>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-5xl lg:text-7xl font-bold leading-tight text-white drop-shadow-lg">
               {currentSlideData.title}
             </h1>
-            <h2 className="text-2xl md:text-3xl font-semibold text-orange-400 mb-4">
-              {currentSlideData.subtitle}
-            </h2>
-            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-xl">
+
+            {/* Description */}
+            <p className="text-lg lg:text-xl text-white/90 leading-relaxed max-w-2xl">
               {currentSlideData.description}
             </p>
 
-            {/* Stats */}
-            <div className="flex flex-wrap gap-8 mb-10">
-              {Object.entries(currentSlideData.stats).map(([key, value]) => (
-                <div key={key}>
-                  <div className="text-3xl md:text-4xl font-bold text-white">
-                    {value}
-                  </div>
-                  <div className="text-sm uppercase text-slate-400">{key}</div>
-                </div>
-              ))}
-            </div>
+            {/* Buttons */}
+            <div className="flex flex-wrap gap-6">
+              <Link to={currentSlideData.cta.link}>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-semibold shadow-lg transition"
+                >
+                  {currentSlideData.cta.text}
+                  <ChevronRight className="ml-2 h-5 w-5" />
+                </motion.button>
+              </Link>
 
-            {/* CTA */}
-            <motion.a
-              href="#projects"
-              className="inline-flex items-center px-6 py-3 bg-orange-500 text-white rounded-full hover:bg-orange-600 transition"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {currentSlideData.cta} <ChevronRight className="ml-2 h-5 w-5" />
-            </motion.a>
+              <Link to={currentSlideData.secondaryCta.link}>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center px-8 py-4 bg-white/90 hover:bg-white text-slate-800 rounded-xl font-semibold shadow-lg transition"
+                >
+                  <Play className="mr-2 h-5 w-5" />
+                  {currentSlideData.secondaryCta.text}
+                </motion.button>
+              </Link>
+            </div>
           </motion.div>
-        </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Arrows */}
+      <div className="absolute inset-y-0 left-6 flex items-center z-20">
+        <button
+          onClick={() =>
+            setCurrentSlide(
+              (prev) => (prev - 1 + slides.length) % slides.length
+            )
+          }
+          className="p-3 rounded-full bg-white/20 hover:bg-white/40 text-white transition"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
+      </div>
+      <div className="absolute inset-y-0 right-6 flex items-center z-20">
+        <button
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+          className="p-3 rounded-full bg-white/20 hover:bg-white/40 text-white transition"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
+      </div>
+
+      {/* Indicators */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-4 h-4 rounded-full border-2 transition ${
+              index === currentSlide
+                ? "bg-orange-500 border-orange-500"
+                : "bg-transparent border-white hover:bg-white/40"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
