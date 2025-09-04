@@ -2,11 +2,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
+  ArrowRight,
   Wrench,
   Package,
   Building2,
   FlaskConical,
-  ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -16,32 +16,28 @@ const coreServices = [
     description:
       "End-to-end design and execution for complex industrial challenges with cutting-edge technology solutions.",
     icon: Wrench,
-    color: "from-blue-500 to-blue-600",
-    hoverColor: "group-hover:from-blue-600 group-hover:to-blue-700",
+    image: "/services/core/engineering.jpg",
   },
   {
     title: "Procurement",
     description:
       "Streamlined and transparent supply chain integration with global vendor networks.",
     icon: Package,
-    color: "from-emerald-500 to-emerald-600",
-    hoverColor: "group-hover:from-emerald-600 group-hover:to-emerald-700",
+    image: "/services/core/procurement.jpg",
   },
   {
     title: "Construction",
     description:
       "Safe, efficient, and modularized field execution with proven methodologies.",
     icon: Building2,
-    color: "from-orange-500 to-orange-600",
-    hoverColor: "group-hover:from-orange-600 group-hover:to-orange-700",
+    image: "/services/core/construction.jpg",
   },
   {
     title: "Chemical Solutions",
     description:
       "Custom-formulated treatment programs and industrial cleaning solutions for optimal performance.",
     icon: FlaskConical,
-    color: "from-purple-500 to-purple-600",
-    hoverColor: "group-hover:from-purple-600 group-hover:to-purple-700",
+    image: "/services/core/chemical-solutions.jpg",
   },
 ];
 
@@ -78,22 +74,25 @@ export default function CoreServices() {
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
                 <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden h-full border border-gray-100 group-hover:border-orange-200">
-                  <div className="relative p-8 pb-6">
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${service.color} ${service.hoverColor}`}
-                    ></div>
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-8 translate-x-8"></div>
-                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/5 rounded-full -translate-x-4 translate-y-4"></div>
-                    <div className="relative z-10">
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all">
-                        <IconComponent className="h-8 w-8 text-white" />
+                  {/* Image */}
+                  <div className="h-48 w-full overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-8">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                        <IconComponent className="h-6 w-6 text-orange-500" />
                       </div>
-                      <h3 className="text-2xl font-bold text-white mb-2">
+                      <h3 className="text-xl font-bold text-gray-900">
                         {service.title}
                       </h3>
                     </div>
-                  </div>
-                  <div className="p-8 pt-4">
                     <p className="text-gray-600 mb-8">{service.description}</p>
                     <div className="flex items-center justify-between">
                       <Link
