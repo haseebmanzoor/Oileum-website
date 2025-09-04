@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, Play } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -13,7 +13,6 @@ const Hero = () => {
       description:
         "Oileum is proud to be a leading EPC company in the energy sector of MENA & South Asia, delivering world-class engineering solutions across downstream oil & gas infrastructure.",
       cta: { text: "Explore Our Services", link: "/services" },
-      secondaryCta: { text: "Company Overview", link: "/about#overview" },
       background: "/logos/refinery-night.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
     },
@@ -23,7 +22,6 @@ const Hero = () => {
       description:
         "With strong operational presence in Iraq, Libya, Qatar, Saudi Arabia and Pakistan, we deliver high-integrity engineering, procurement, and technical services for refineries and energy infrastructure.",
       cta: { text: "View Our Projects", link: "/projects" },
-      secondaryCta: { text: "Learn More", link: "/about#learn-more" },
       background: "/logos/solar-wind.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
     },
@@ -33,7 +31,6 @@ const Hero = () => {
       description:
         "Backed by decades of field expertise and commitment to quality, Oileum is trusted for driving results in the most challenging environments across the energy sector.",
       cta: { text: "About Oileum", link: "/about" },
-      secondaryCta: { text: "Our Legacy", link: "/about#legacy" },
       background: "/logos/lng-plant.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
     },
@@ -97,7 +94,7 @@ const Hero = () => {
               {currentSlideData.description}
             </p>
 
-            {/* Buttons */}
+            {/* Only Primary Button */}
             <div className="flex flex-wrap gap-6">
               <Link to={currentSlideData.cta.link}>
                 <motion.button
@@ -107,17 +104,6 @@ const Hero = () => {
                 >
                   {currentSlideData.cta.text}
                   <ChevronRight className="ml-2 h-5 w-5" />
-                </motion.button>
-              </Link>
-
-              <Link to={currentSlideData.secondaryCta.link}>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center px-8 py-4 bg-white/90 hover:bg-white text-slate-800 rounded-xl font-semibold shadow-lg transition"
-                >
-                  <Play className="mr-2 h-5 w-5" />
-                  {currentSlideData.secondaryCta.text}
                 </motion.button>
               </Link>
             </div>
