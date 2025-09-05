@@ -37,17 +37,9 @@ const Navbar = () => {
       href: "/about",
       isActive: location.pathname.startsWith("/about"),
       dropdown: [
-        {
-          name: "Company Overview",
-          desc: "Who we are",
-          href: "/about#overview",
-        },
-        { name: "Our Legacy", desc: "Our journey", href: "/about#legacy" },
-        {
-          name: "Why Choose Us",
-          desc: "Our core values",
-          href: "/about#learn-more",
-        },
+        { name: "Company Profile", desc: "Who we are", href: "/about#profile" },
+        { name: "CEO Message", desc: "Message from CEO", href: "/about#ceo" },
+        { name: "Our Value", desc: "Core principles", href: "/about#value" },
       ],
     },
 
@@ -57,12 +49,12 @@ const Navbar = () => {
       isActive: location.pathname.startsWith("/services"),
       dropdown: [
         {
-          name: "Engineering",
+          name: "Engineering Design",
           desc: "Design solutions",
           href: "/services/engineering",
         },
         {
-          name: "Procurement",
+          name: "Procurement Services",
           desc: "Supply chain",
           href: "/services/procurement",
         },
@@ -70,21 +62,6 @@ const Navbar = () => {
           name: "Construction",
           desc: "Field execution",
           href: "/services/construction",
-        },
-        {
-          name: "Chemical Solutions",
-          desc: "Treatment programs",
-          href: "/services/chemical-solutions",
-        },
-        {
-          name: "Operations & Maintenance",
-          desc: "Plant ops",
-          href: "/services/operations-maintenance",
-        },
-        {
-          name: "Heat Exchanger Services",
-          desc: "Retubing & manufacturing",
-          href: "/services/heat-exchanger",
         },
       ],
     },
