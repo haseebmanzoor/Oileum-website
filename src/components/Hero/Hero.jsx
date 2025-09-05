@@ -3,37 +3,90 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import CoreServices from "../Services/CoreServices";
-// ✅ import your new component
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
     {
-      title: "Transforming the Art of Engineering",
-      subtitle: "End-to-End Engineering Solutions",
+      title: "World-Class Engineering Solutions",
+      subtitle: "Design • Procurement • Commissioning",
       description:
-        "Oileum is proud to be a leading EPC company in the energy sector of MENA & South Asia, delivering world-class engineering solutions across downstream oil & gas infrastructure.",
+        "At Oileum, we provide end-to-end EPC and mechanical services for the oil, gas, petrochemical, and industrial sectors.",
       cta: { text: "Explore Our Services", link: "/services" },
-      background: "/logos/refinery-night.jpg",
+      background: "/hero/engineering-design.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
     },
     {
-      title: "Excellence in Industrial Services",
-      subtitle: "Trusted Across MENA & South Asia",
+      title: "Sustainable & Reliable",
+      subtitle: "Cost-Effective Engineering",
       description:
-        "With strong operational presence in Iraq, Libya, Qatar, Saudi Arabia and Pakistan, we deliver high-integrity engineering, procurement, and technical services for refineries and energy infrastructure.",
+        "Our commitment is to deliver sustainable, reliable, and value-driven solutions that keep industries moving forward.",
       cta: { text: "View Our Projects", link: "/projects" },
-      background: "/logos/solar-wind.jpg",
+      background: "/hero/procurement.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
     },
     {
-      title: "Innovation Meets Experience",
-      subtitle: "Four Decades of Engineering Excellence",
+      title: "Partner in Industrial Success",
+      subtitle: "Beyond Service Provider",
       description:
-        "Backed by decades of field expertise and commitment to quality, Oileum is trusted for driving results in the most challenging environments across the energy sector.",
+        "Oileum is not just a service provider—it’s a long-term partner in driving industrial success and operational excellence.",
       cta: { text: "About Oileum", link: "/about" },
-      background: "/logos/lng-plant.jpg",
+      background: "/hero/industrial-success.jpg",
+      overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
+    },
+    {
+      title: "Decades of Engineering Expertise",
+      subtitle: "Proven Global Track Record",
+      description:
+        "Our expert team has successfully executed projects ranging from small-scale upgrades to multi-billion-dollar EPC contracts.",
+      cta: { text: "Our Experience", link: "/projects" },
+      background: "/hero/commissioning.jpg",
+      overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
+    },
+    {
+      title: "Commitment to QHSE Standards",
+      subtitle: "Quality • Health • Safety • Environment",
+      description:
+        "We pride ourselves on adaptability, technical depth, and an uncompromising focus on global QHSE standards.",
+      cta: { text: "Learn More", link: "/about" },
+      background: "/hero/qhse-standards.jpg",
+      overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
+    },
+    {
+      title: "Innovating Engineering Solutions",
+      subtitle: "Delivering Excellence Worldwide",
+      description:
+        "With innovation at our core, Oileum continues to deliver world-class engineering solutions across the globe.",
+      cta: { text: "Explore More", link: "/services" },
+      background: "/hero/mechanical-services.jpg",
+      overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
+    },
+    {
+      title: "Global Supply Chain Strength",
+      subtitle: "Trusted Vendor Network",
+      description:
+        "We leverage a global supply chain and trusted vendor network to ensure seamless procurement and delivery.",
+      cta: { text: "Our Network", link: "/about" },
+      background: "/hero/global-network.jpg",
+      overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
+    },
+    {
+      title: "Large-Scale Project Success",
+      subtitle: "Mega EPC Contracts",
+      description:
+        "With a proven track record in large-scale projects, Oileum continues to be a trusted partner worldwide.",
+      cta: { text: "View Projects", link: "/projects" },
+      background: "/hero/large-projects.jpg",
+      overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
+    },
+    {
+      title: "Experienced Engineering Team",
+      subtitle: "Specialists You Can Trust",
+      description:
+        "Our team of experienced engineers and specialists bring technical depth, innovation, and precision to every project.",
+      cta: { text: "Meet Our Team", link: "/about" },
+      background: "/hero/experienced-team.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
     },
   ];

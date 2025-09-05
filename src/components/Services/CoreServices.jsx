@@ -16,28 +16,28 @@ const coreServices = [
     description:
       "End-to-end design and execution for complex industrial challenges with cutting-edge technology solutions.",
     icon: Wrench,
-    image: "/services/core/engineering.jpg",
+    image: "/services/engineering.jpg",
   },
   {
     title: "Procurement",
     description:
       "Streamlined and transparent supply chain integration with global vendor networks.",
     icon: Package,
-    image: "/services/core/procurement.jpg",
+    image: "/services/procurement.jpg",
   },
   {
     title: "Construction",
     description:
       "Safe, efficient, and modularized field execution with proven methodologies.",
     icon: Building2,
-    image: "/services/core/construction.jpg",
+    image: "/services/construction.jpg",
   },
   {
     title: "Chemical Solutions",
     description:
       "Custom-formulated treatment programs and industrial cleaning solutions for optimal performance.",
     icon: FlaskConical,
-    image: "/services/core/chemical-solutions.jpg",
+    image: "/services/chemical-solutions.jpg",
   },
 ];
 
