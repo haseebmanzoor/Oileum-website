@@ -8,7 +8,8 @@ import VisionValues from "./components/VisionValues/VisionValues";
 import Footer from "./components/Footer/Footer";
 import ContactComponent from "./components/Contact/ContactComponent";
 import Sustainability from "./components/Sustainability/Sustainability";
-import Careers from "./components/Careers/Careers"; // <-- Added
+import Careers from "./components/Careers/Careers";
+import Clients from "./components/client/Clients"; // <-- Fixed: Import Clients component
 
 // Pages
 const Home = () => <Hero />;
@@ -28,8 +29,9 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/vision-values" element={<VisionValues />} />
             <Route path="/sustainability" element={<Sustainability />} />
-            <Route path="/careers" element={<Careers />} />{" "}
-            {/* <-- Careers route */}
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/clients" element={<Clients />} />{" "}
+            {/* <-- Fixed: Clients route */}
             <Route path="/contact" element={<ContactComponent />} />
           </Routes>
         </main>

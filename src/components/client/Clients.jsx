@@ -1,104 +1,71 @@
-// src/components/Services/Services.jsx
+// src/components/client/Clients.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Wrench,
-  Package,
-  Building2,
-  FlaskRound,
-  Cog,
+  Fuel,
+  Factory,
   Zap,
   Droplets,
-  Target,
+  Building,
   Lightbulb,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const servicesData = [
+const clientsData = [
   {
-    title: "Engineering Excellence",
+    title: "Oil & Gas",
     description: [
-      "End-to-end engineering services",
-      "Cutting-edge technology",
-      "40+ years of expertise",
+      "Upstream exploration and production",
+      "Midstream transportation and storage",
+      "Downstream refining operations",
     ],
-    icon: Wrench,
-    image: "/services/engineering.jpg",
+    icon: Fuel,
+    image: "/clients/oil-gas.jpg",
   },
   {
-    title: "Strategic Procurement",
+    title: "Petrochemicals & Refineries",
     description: [
-      "Optimized procurement strategies",
-      "Worldwide vendor networks",
-      "Quality assurance",
+      "Complex petrochemical processes",
+      "Refinery optimization solutions",
+      "Advanced catalyst technologies",
     ],
-    icon: Package,
-    image: "/services/procurement.jpg",
+    icon: Factory,
+    image: "/clients/petrochemicals.jpg",
   },
   {
-    title: "Construction Mastery",
+    title: "Power Generation & Energy",
     description: [
-      "Safe construction execution",
-      "Efficient methodologies",
-      "Zero-incident safety record",
-    ],
-    icon: Building2,
-    image: "/services/construction.jpg",
-  },
-  {
-    title: "Chemical Engineering",
-    description: [
-      "Specialized chemical treatment programs",
-      "Process optimization",
-      "Maximum efficiency",
-    ],
-    icon: FlaskRound,
-    image: "/services/chemical-solutions.jpg",
-  },
-  {
-    title: "Operations & Maintenance",
-    description: [
-      "Comprehensive O&M services",
-      "Ensures optimal performance",
-      "Covers full asset lifecycle",
-    ],
-    icon: Cog,
-    image: "/services/maintenance.jpg",
-  },
-  {
-    title: "Heat Exchanger Services",
-    description: [
-      "Complete solutions from design to maintenance",
-      "ASME compliance",
-      "Reliable performance",
+      "Thermal power plant solutions",
+      "Renewable energy systems",
+      "Energy storage technologies",
     ],
     icon: Zap,
-    image: "/services/heat-exchanger.jpg",
+    image: "/clients/power-generation.jpg",
   },
   {
-    title: "Environmental Solutions",
+    title: "Water & Wastewater Treatment",
     description: [
-      "Advanced effluent treatment",
-      "Sustainable operations",
-      "Environmental compliance",
+      "Advanced treatment processes",
+      "Water recycling systems",
+      "Environmental compliance solutions",
     ],
     icon: Droplets,
-    image: "/services/environmental.jpg",
+    image: "/clients/water-treatment.jpg",
   },
   {
-    title: "Project Management",
+    title: "Manufacturing & Heavy Industries",
     description: [
-      "Comprehensive project controls",
-      "From conception to completion",
-      "Efficient delivery",
+      "Industrial process optimization",
+      "Heavy machinery solutions",
+      "Manufacturing efficiency systems",
     ],
-    icon: Target,
-    image: "/services/project-management.jpg",
+    icon: Building,
+    image: "/clients/manufacturing.jpg",
   },
 ];
 
-export default function Services() {
+export default function Clients() {
   return (
     <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
@@ -111,20 +78,19 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6"
           >
-            Our <span className="text-orange-500">Services</span>
+            Industries We <span className="text-orange-500">Serve</span>
           </motion.h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            At Oileum, we deliver complete Engineering, Procurement,
-            Construction, and Commissioning (EPCC) solutions for the energy and
-            industrial sectors. Our integrated approach ensures safe, efficient,
-            and cost-effective project execution.
+            Oileum provides comprehensive solutions across multiple industries,
+            delivering excellence and innovation to drive sustainable growth and
+            operational efficiency in every sector we serve.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {servicesData.map((service, index) => {
-            const IconComponent = service.icon;
+        {/* Industries Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {clientsData.map((client, index) => {
+            const IconComponent = client.icon;
             return (
               <motion.div
                 key={index}
@@ -136,8 +102,8 @@ export default function Services() {
                   {/* Image */}
                   <div className="h-48 w-full overflow-hidden">
                     <img
-                      src={service.image}
-                      alt={service.title}
+                      src={client.image}
+                      alt={client.title}
                       className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
                     />
                   </div>
@@ -149,11 +115,11 @@ export default function Services() {
                         <IconComponent className="h-6 w-6 text-orange-500" />
                       </div>
                       <h3 className="text-xl font-bold text-gray-900">
-                        {service.title}
+                        {client.title}
                       </h3>
                     </div>
                     <ul className="text-gray-600 mb-8 list-disc pl-5 space-y-2">
-                      {service.description.map((point, i) => (
+                      {client.description.map((point, i) => (
                         <li key={i}>{point}</li>
                       ))}
                     </ul>
@@ -183,14 +149,13 @@ export default function Services() {
             </div>
 
             <h3 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Start Your Project with{" "}
-              <span className="text-orange-500">Oileum</span>
+              Partner With Industry{" "}
+              <span className="text-orange-500">Experts Today</span>
             </h3>
             <p className="text-lg text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Oileum specializes in end-to-end EPC services, combining
-              engineering expertise, reliable procurement, and precision
-              construction. We deliver projects that are safe, efficient, and
-              built for long-term performance.
+              Join leading companies across diverse industries who trust Oileum
+              for innovative solutions, exceptional quality, and reliable
+              project delivery that drives sustainable success.
             </p>
 
             <Link to="/contact">
@@ -199,7 +164,7 @@ export default function Services() {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-semibold shadow-lg transition"
               >
-                Start Your Project
+                Discuss Your Project
                 <ArrowRight className="ml-2 h-5 w-5" />
               </motion.button>
             </Link>
