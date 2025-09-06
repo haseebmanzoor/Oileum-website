@@ -149,13 +149,13 @@ export default function Clients() {
             </div>
 
             <h3 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Partner With Industry{" "}
-              <span className="text-orange-500">Experts Today</span>
+              Trusted Partners in Engineering{" "}
+              <span className="text-orange-500">Excellence</span>
             </h3>
             <p className="text-lg text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Join leading companies across diverse industries who trust Oileum
-              for innovative solutions, exceptional quality, and reliable
-              project delivery that drives sustainable success.
+              Leading companies rely on Oileum for innovative solutions,
+              superior quality, and on-time project delivery — ensuring
+              sustainable growth and long-term success.
             </p>
 
             <Link to="/contact">

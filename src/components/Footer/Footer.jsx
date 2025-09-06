@@ -54,24 +54,13 @@ function Footer() {
           <div>
             <h3 className="text-2xl font-bold mb-6 text-white">About Us</h3>
             <p className="text-slate-300 leading-relaxed">
-              OILEUM is a UAE-based industrial services company specializing in
-              downstream oil & gas solutions across the Middle East, North
-              Africa, and South Asia. With a strong operational footprint in
-              Iraq, Libya, Qatar, Saudi Arabia, and Pakistan, we deliver
-              high-integrity engineering, procurement, and technical services
-              for refineries and energy infrastructure. Backed by decades of
-              field expertise and a commitment to quality, Oileum is trusted for
-              driving results in the most challenging environments.
-            </p>
-            <p className="text-slate-300 leading-relaxed mt-4">
-              Oileum began as a modest engineering venture and has since evolved
-              into one of the most respected and dynamic EPC companies operating
-              across the MENA and South Asia regions. Our foundation is
-              strengthened by the backing of UDKS, a globally recognized
-              construction group. We remain committed to innovation, technical
-              excellence, and operational improvements that reduce risk,
-              minimize waste, and uphold the highest standards of environmental
-              and human safety.
+              Oileum has built a reputation as a trusted partner for oil & Gas
+              projects. Our Team understand the value of relationships to ensure
+              that we comprehensively address all requirements at each stage in
+              a project's development. By closely collaborating with our
+              clients, contractors, subcontractors and vendor/suppliers, we
+              deliver projects through specialists who understand on-the-ground
+              context and industry expectations.
             </p>
           </div>
         </div>
