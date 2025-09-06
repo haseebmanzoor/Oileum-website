@@ -15,7 +15,6 @@ const CONTACT_INFO = {
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -26,111 +25,35 @@ const Navbar = () => {
 
   useEffect(() => {
     setMobileMenuOpen(false);
-    setActiveDropdown(null);
   }, [location]);
 
   const navItems = [
     { name: "Home", href: "/", isActive: location.pathname === "/" },
-
     {
       name: "About Us",
       href: "/about",
-      isActive: location.pathname.startsWith("/about"),
-      dropdown: [
-        { name: "Company Profile", desc: "Who we are", href: "/about#profile" },
-        { name: "CEO Message", desc: "Message from CEO", href: "/about#ceo" },
-        { name: "Our Value", desc: "Core principles", href: "/about#value" },
-      ],
+      isActive: location.pathname === "/about",
     },
-
     {
       name: "Services",
       href: "/services",
-      isActive: location.pathname.startsWith("/services"),
-      dropdown: [
-        {
-          name: "Engineering Design",
-          desc: "Design solutions",
-          href: "/services/engineering",
-        },
-        {
-          name: "Procurement Services",
-          desc: "Supply chain",
-          href: "/services/procurement",
-        },
-        {
-          name: "Construction",
-          desc: "Field execution",
-          href: "/services/construction",
-        },
-      ],
+      isActive: location.pathname === "/services",
     },
-
     {
       name: "Projects",
       href: "/projects",
-      isActive: location.pathname.startsWith("/projects"),
-      dropdown: [
-        {
-          name: "Oil & Gas",
-          desc: "Refinery & pipeline",
-          href: "/projects/oil-gas",
-        },
-        {
-          name: "Infrastructure",
-          desc: "Industrial construction",
-          href: "/projects/infrastructure",
-        },
-        {
-          name: "Energy Solutions",
-          desc: "Power projects",
-          href: "/projects/energy",
-        },
-        {
-          name: "Case Studies",
-          desc: "Successful deliveries",
-          href: "/projects/case-studies",
-        },
-      ],
+      isActive: location.pathname === "/projects",
     },
-
     {
       name: "Sustainability",
       href: "/sustainability",
-      isActive: location.pathname.startsWith("/sustainability"),
-      dropdown: [
-        {
-          name: "HSE Practices",
-          desc: "Health & Safety",
-          href: "/sustainability/hse",
-        },
-        {
-          name: "Community Impact",
-          desc: "Community work",
-          href: "/sustainability/community",
-        },
-        {
-          name: "Green Initiatives",
-          desc: "Environmental",
-          href: "/sustainability/initiatives",
-        },
-      ],
+      isActive: location.pathname === "/sustainability",
     },
-
     {
       name: "Careers",
       href: "/careers",
-      isActive: location.pathname.startsWith("/careers"),
-      dropdown: [
-        {
-          name: "Openings",
-          desc: "Available positions",
-          href: "/careers/openings",
-        },
-        { name: "Life at Oileum", desc: "Culture", href: "/careers/culture" },
-      ],
+      isActive: location.pathname === "/careers",
     },
-
     {
       name: "Contact",
       href: "/contact",
@@ -156,14 +79,8 @@ const Navbar = () => {
 
           <div className="hidden lg:block ml-10">
             <div className="flex items-center space-x-1">
-              {navItems.map((item, index) => (
-                <NavItem
-                  key={item.name}
-                  item={item}
-                  index={index}
-                  activeDropdown={activeDropdown}
-                  setActiveDropdown={setActiveDropdown}
-                />
+              {navItems.map((item) => (
+                <NavItem key={item.name} item={item} />
               ))}
             </div>
           </div>
