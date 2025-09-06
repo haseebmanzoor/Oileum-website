@@ -14,7 +14,7 @@ const Logo = () => (
         OILEUM
       </h1>
       <span className="text-xs text-slate-400 font-medium tracking-widest">
-        ENERGY SOLUTIONS
+        ENGINEERING SOLUTIONS
       </span>
     </div>
   </Link>
