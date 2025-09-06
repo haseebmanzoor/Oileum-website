@@ -18,57 +18,81 @@ import { Link } from "react-router-dom";
 const servicesData = [
   {
     title: "Engineering Excellence",
-    description:
-      "End-to-end engineering services with cutting-edge technology and 40+ years of expertise.",
+    description: [
+      "End-to-end engineering services",
+      "Cutting-edge technology",
+      "40+ years of expertise",
+    ],
     icon: Wrench,
     image: "/services/engineering.jpg",
   },
   {
     title: "Strategic Procurement",
-    description:
-      "Optimized procurement strategies with worldwide vendor networks and quality assurance.",
+    description: [
+      "Optimized procurement strategies",
+      "Worldwide vendor networks",
+      "Quality assurance",
+    ],
     icon: Package,
     image: "/services/procurement.jpg",
   },
   {
     title: "Construction Mastery",
-    description:
-      "Safe, efficient construction execution with zero-incident safety record and proven methodologies.",
+    description: [
+      "Safe construction execution",
+      "Efficient methodologies",
+      "Zero-incident safety record",
+    ],
     icon: Building2,
     image: "/services/construction.jpg",
   },
   {
     title: "Chemical Engineering",
-    description:
-      "Specialized chemical treatment programs and process optimization for maximum efficiency.",
+    description: [
+      "Specialized chemical treatment programs",
+      "Process optimization",
+      "Maximum efficiency",
+    ],
     icon: FlaskRound,
     image: "/services/chemical-solutions.jpg",
   },
   {
     title: "Operations & Maintenance",
-    description:
-      "Comprehensive O&M services ensuring optimal performance throughout asset lifecycle.",
+    description: [
+      "Comprehensive O&M services",
+      "Ensures optimal performance",
+      "Covers full asset lifecycle",
+    ],
     icon: Cog,
     image: "/services/maintenance.jpg",
   },
   {
     title: "Heat Exchanger Services",
-    description:
-      "Complete heat exchanger solutions from design to maintenance with ASME compliance.",
+    description: [
+      "Complete solutions from design to maintenance",
+      "ASME compliance",
+      "Reliable performance",
+    ],
     icon: Zap,
     image: "/services/heat-exchanger.jpg",
   },
   {
     title: "Environmental Solutions",
-    description:
-      "Advanced effluent treatment and environmental solutions for sustainable operations.",
+    description: [
+      "Advanced effluent treatment",
+      "Sustainable operations",
+      "Environmental compliance",
+    ],
     icon: Droplets,
     image: "/services/environmental.jpg",
   },
   {
     title: "Project Management",
-    description:
-      "Comprehensive project controls and management from conception to completion.",
+    description: [
+      "Comprehensive project controls",
+      "From conception to completion",
+      "Efficient delivery",
+    ],
     icon: Target,
     image: "/services/project-management.jpg",
   },
@@ -126,15 +150,12 @@ export default function Services() {
                         {service.title}
                       </h3>
                     </div>
-                    <p className="text-gray-600 mb-8">{service.description}</p>
-                    <div className="flex items-center justify-between">
-                      <Link
-                        to="/contact"
-                        className="inline-flex items-center text-orange-500 font-semibold hover:text-orange-600"
-                      >
-                        Learn More
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
+                    <ul className="text-gray-600 mb-8 list-disc pl-5 space-y-2">
+                      {service.description.map((point, i) => (
+                        <li key={i}>{point}</li>
+                      ))}
+                    </ul>
+                    <div className="flex items-center justify-end">
                       <div className="text-gray-300 font-bold text-sm">
                         {String(index + 1).padStart(2, "0")}
                       </div>

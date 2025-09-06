@@ -1,16 +1,13 @@
-// src/components/Header/NavItem.jsx - Fixed dropdown behavior
-import React from "react";
+// src/components/Header/NavItem.jsx
+import React, { useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const NavItem = ({ item, index, activeDropdown, setActiveDropdown }) => {
-  let hoverTimeout;
+  const hoverTimeout = useRef(null);
 
   const handleMouseEnter = () => {
-    // Clear any existing timeout
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout);
-    }
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
 
     if (item.dropdown) {
       setActiveDropdown(item.name);
@@ -18,22 +15,17 @@ const NavItem = ({ item, index, activeDropdown, setActiveDropdown }) => {
   };
 
   const handleMouseLeave = () => {
-    // Add a small delay before closing the dropdown
-    hoverTimeout = setTimeout(() => {
+    hoverTimeout.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 150); // 150ms delay
+    }, 150);
   };
 
   const handleDropdownMouseEnter = () => {
-    // Keep dropdown open when hovering over it
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout);
-    }
+    if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
   };
 
   const handleDropdownMouseLeave = () => {
-    // Close dropdown when leaving the dropdown area
-    hoverTimeout = setTimeout(() => {
+    hoverTimeout.current = setTimeout(() => {
       setActiveDropdown(null);
     }, 100);
   };
@@ -67,10 +59,10 @@ const NavItem = ({ item, index, activeDropdown, setActiveDropdown }) => {
           onMouseEnter={handleDropdownMouseEnter}
           onMouseLeave={handleDropdownMouseLeave}
         >
-          {/* Invisible bridge to prevent dropdown from closing */}
+          {/* Invisible bridge */}
           <div className="h-2 w-full absolute top-0 left-0 bg-transparent"></div>
 
-          {/* Actual dropdown content */}
+          {/* Dropdown content */}
           <div className="w-80 bg-white rounded-2xl shadow-2xl border border-slate-200 py-4 transition-all animate-in slide-in-from-top-2 fade-in duration-200">
             <div className="px-6 py-2 border-b border-slate-100">
               <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wide">
@@ -82,7 +74,7 @@ const NavItem = ({ item, index, activeDropdown, setActiveDropdown }) => {
                 key={subItem.name}
                 to={subItem.href}
                 className="block px-6 py-3 hover:bg-slate-50 transition-colors group"
-                onClick={() => setActiveDropdown(null)} // Close dropdown when clicking a link
+                onClick={() => setActiveDropdown(null)}
               >
                 <div className="flex items-start space-x-3">
                   <div className="w-2 h-2 bg-orange-400 rounded-full mt-2 opacity-60 group-hover:opacity-100 transition-opacity"></div>
@@ -90,9 +82,11 @@ const NavItem = ({ item, index, activeDropdown, setActiveDropdown }) => {
                     <div className="text-slate-900 font-semibold text-sm group-hover:text-orange-600 transition-colors">
                       {subItem.name}
                     </div>
-                    <div className="text-slate-500 text-xs mt-1">
-                      {subItem.desc}
-                    </div>
+                    {subItem.desc && (
+                      <div className="text-slate-500 text-xs mt-1">
+                        {subItem.desc}
+                      </div>
+                    )}
                   </div>
                 </div>
               </Link>

@@ -13,29 +13,41 @@ import { Link } from "react-router-dom";
 const coreServices = [
   {
     title: "Engineering",
-    description:
-      "End-to-end design and execution for complex industrial challenges with cutting-edge technology solutions.",
+    description: [
+      "End-to-end design",
+      "Execution for complex industrial challenges",
+      "Cutting-edge technology solutions",
+    ],
     icon: Wrench,
     image: "/services/engineering.jpg",
   },
   {
     title: "Procurement",
-    description:
-      "Streamlined and transparent supply chain integration with global vendor networks.",
+    description: [
+      "Streamlined supply chain integration",
+      "Transparent processes",
+      "Global vendor networks",
+    ],
     icon: Package,
     image: "/services/procurement.jpg",
   },
   {
     title: "Construction",
-    description:
-      "Safe, efficient, and modularized field execution with proven methodologies.",
+    description: [
+      "Safe field execution",
+      "Efficient methodologies",
+      "Modularized construction approach",
+    ],
     icon: Building2,
     image: "/services/construction.jpg",
   },
   {
     title: "Chemical Solutions",
-    description:
-      "Custom-formulated treatment programs and industrial cleaning solutions for optimal performance.",
+    description: [
+      "Custom-formulated treatment programs",
+      "Industrial cleaning solutions",
+      "Optimized performance outcomes",
+    ],
     icon: FlaskConical,
     image: "/services/chemical-solutions.jpg",
   },
@@ -93,7 +105,11 @@ export default function CoreServices() {
                         {service.title}
                       </h3>
                     </div>
-                    <p className="text-gray-600 mb-8">{service.description}</p>
+                    <ul className="text-gray-600 mb-8 list-disc pl-5 space-y-2">
+                      {service.description.map((point, i) => (
+                        <li key={i}>{point}</li>
+                      ))}
+                    </ul>
                     <div className="flex items-center justify-between">
                       <Link
                         to="/services"
