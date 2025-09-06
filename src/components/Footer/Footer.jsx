@@ -9,6 +9,7 @@ import {
   Instagram,
   ArrowUp,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const scrollToTop = () => {
@@ -80,7 +81,8 @@ function Footer() {
           <p>© 2025 Oileum. All Rights Reserved.</p>
           <div className="flex space-x-4 mt-2 md:mt-0">
             <a href="#">Alumni Association</a>
-            <a href="#">Contact Us</a>
+            {/* Updated Contact Us link */}
+            <Link to="/contact">Contact Us</Link>
           </div>
           <button
             onClick={scrollToTop}

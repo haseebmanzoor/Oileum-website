@@ -17,12 +17,14 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
@@ -40,10 +42,10 @@ const Navbar = () => {
       isActive: location.pathname === "/services",
     },
     {
-      name: "Projects",
-      href: "/projects",
-      isActive: location.pathname === "/projects",
-    },
+      name: "Clients",
+      href: "/clients",
+      isActive: location.pathname === "/clients",
+    }, // ✅ Changed
     {
       name: "Sustainability",
       href: "/sustainability",
@@ -73,10 +75,12 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-18 lg:h-20">
+          {/* Logo */}
           <Link to="/" className="flex-shrink-0">
             <Logo />
           </Link>
 
+          {/* Desktop Nav */}
           <div className="hidden lg:block ml-10">
             <div className="flex items-center space-x-1">
               {navItems.map((item) => (
@@ -85,6 +89,7 @@ const Navbar = () => {
             </div>
           </div>
 
+          {/* CTA Button */}
           <div className="hidden lg:block">
             <Link to="/contact?inquiry=proposal">
               <button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-8 py-3 rounded-xl font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:ring-2 focus:ring-orange-500 relative overflow-hidden group">
@@ -94,6 +99,7 @@ const Navbar = () => {
             </Link>
           </div>
 
+          {/* Mobile Menu Button */}
           <div className="lg:hidden">
             <button
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
@@ -109,6 +115,7 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Mobile Menu */}
         <MobileMenu
           navItems={navItems}
           mobileMenuOpen={mobileMenuOpen}
