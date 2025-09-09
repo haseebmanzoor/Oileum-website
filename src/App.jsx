@@ -1,5 +1,6 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop"; // Smooth scroll
 import Navbar from "./components/Header/Navbar";
 import Hero from "./components/Hero/Hero";
 import AboutUs from "./components/AboutUs/About";
@@ -9,7 +10,7 @@ import Footer from "./components/Footer/Footer";
 import ContactComponent from "./components/Contact/ContactComponent";
 import Sustainability from "./components/Sustainability/Sustainability";
 import Careers from "./components/Careers/Careers";
-import Clients from "./components/client/Clients"; // <-- Fixed: Import Clients component
+import Clients from "./components/client/Clients";
 
 // Pages
 const Home = () => <Hero />;
@@ -19,20 +20,29 @@ const ServicesPage = () => <Services />;
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* Smooth scroll on route change */}
       <div className="font-sans text-gray-800 bg-white min-h-screen flex flex-col">
         <Navbar />
 
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/vision-values" element={<VisionValues />} />
-            <Route path="/sustainability" element={<Sustainability />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/clients" element={<Clients />} />{" "}
-            {/* <-- Fixed: Clients route */}
-            <Route path="/contact" element={<ContactComponent />} />
+            <Route path="/" element={<Home key="home" />} />
+            <Route path="/about" element={<About key="about" />} />
+            <Route path="/services" element={<ServicesPage key="services" />} />
+            <Route
+              path="/vision-values"
+              element={<VisionValues key="vision-values" />}
+            />
+            <Route
+              path="/sustainability"
+              element={<Sustainability key="sustainability" />}
+            />
+            <Route path="/careers" element={<Careers key="careers" />} />
+            <Route path="/clients" element={<Clients key="clients" />} />
+            <Route
+              path="/contact"
+              element={<ContactComponent key="contact" />}
+            />
           </Routes>
         </main>
 

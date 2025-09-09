@@ -53,7 +53,10 @@ const sustainabilityData = [
 
 export default function Sustainability() {
   return (
-    <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-24 relative overflow-hidden">
+    <section
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: "#030717" }}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         {/* Section Header */}
         <div className="text-center mb-20">
@@ -62,11 +65,11 @@ export default function Sustainability() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6"
+            className="text-4xl lg:text-6xl font-bold text-white mb-6"
           >
-            Our <span className="text-green-600">Sustainability</span>
+            Our <span className="text-green-500">Sustainability</span>
           </motion.h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             At Oileum, sustainability is at the heart of how we design, build,
             and deliver projects—balancing growth with responsibility to people,
             the environment, and communities.

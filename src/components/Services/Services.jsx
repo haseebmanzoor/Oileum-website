@@ -100,7 +100,10 @@ const servicesData = [
 
 export default function Services() {
   return (
-    <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-24 relative overflow-hidden">
+    <section
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: "#030717" }}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
         {/* Section Header */}
         <div className="text-center mb-20">
@@ -109,11 +112,11 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6"
+            className="text-4xl lg:text-6xl font-bold text-white mb-6"
           >
             Our <span className="text-orange-500">Services</span>
           </motion.h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             At Oileum, we deliver complete Engineering, Procurement,
             Construction, and Commissioning (EPCC) solutions for the energy and
             industrial sectors. Our integrated approach ensures safe, efficient,
