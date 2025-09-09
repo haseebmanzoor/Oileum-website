@@ -14,9 +14,9 @@ const coreServices = [
   {
     title: "Engineering",
     description: [
-      "End-to-end design",
-      "Execution for complex industrial challenges",
-      "Cutting-edge technology solutions",
+      "Front-End Engineering Design (FEED) and Detailed Engineering",
+      "Process simulation, optimization, and energy balance studies",
+      "Conceptual & Feasibility Studies",
     ],
     icon: Wrench,
     image: "/services/engineering.jpg",
@@ -24,9 +24,9 @@ const coreServices = [
   {
     title: "Procurement",
     description: [
-      "Streamlined supply chain integration",
-      "Transparent processes",
-      "Global vendor networks",
+      "Global sourcing & vendor management",
+      "Quality assurance & inspection",
+      "Logistics & supply chain solutions",
     ],
     icon: Package,
     image: "/services/procurement.jpg",
@@ -34,9 +34,9 @@ const coreServices = [
   {
     title: "Construction",
     description: [
-      "Safe field execution",
-      "Efficient methodologies",
-      "Modularized construction approach",
+      "Mechanical, piping, structural, and civil construction",
+      "Erection of heavy static & rotating equipment (pumps, turbines, compressors)",
+      "Welding, fabrication, hydrotesting, and site QA/QC",
     ],
     icon: Building2,
     image: "/services/construction.jpg",

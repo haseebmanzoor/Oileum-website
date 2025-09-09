@@ -19,9 +19,11 @@ const servicesData = [
   {
     title: "Engineering Excellence",
     description: [
-      "End-to-end engineering services",
-      "Cutting-edge technology",
-      "40+ years of expertise",
+      "Front-End Engineering Design (FEED) and Detailed Engineering",
+      "Process simulation, optimization, and energy balance studies",
+      "Process Modification & Test Run Studies",
+      "Piping & instrumentation diagrams (P&IDs)",
+      "Advanced simulation tools for efficiency",
     ],
     icon: Wrench,
     image: "/services/engineering.jpg",
@@ -29,9 +31,10 @@ const servicesData = [
   {
     title: "Strategic Procurement",
     description: [
-      "Optimized procurement strategies",
-      "Worldwide vendor networks",
-      "Quality assurance",
+      "Global sourcing & vendor management",
+      "Quality assurance & inspection",
+      "Logistics & supply chain solutions",
+      "Cost-optimized procurement strategies",
     ],
     icon: Package,
     image: "/services/procurement.jpg",
@@ -39,9 +42,10 @@ const servicesData = [
   {
     title: "Construction Mastery",
     description: [
-      "Safe construction execution",
-      "Efficient methodologies",
-      "Zero-incident safety record",
+      "Mechanical, piping, structural, and civil construction",
+      "Erection of heavy static & rotating equipment (pumps, turbines, compressors)",
+      "Pre-commissioning, commissioning, and system integration",
+      "Development of commissioning procedures and documentation",
     ],
     icon: Building2,
     image: "/services/construction.jpg",
@@ -49,9 +53,11 @@ const servicesData = [
   {
     title: "Chemical Engineering",
     description: [
-      "Specialized chemical treatment programs",
-      "Process optimization",
-      "Maximum efficiency",
+      "Rotating & static equipment maintenance",
+      "Rotating & static equipment maintenance",
+      "Welding, fabrication & repair works",
+      "Shutdown & turnaround maintenance",
+      "Condition monitoring & troubleshooting",
     ],
     icon: FlaskRound,
     image: "/services/chemical-solutions.jpg",

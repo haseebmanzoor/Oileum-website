@@ -10,9 +10,6 @@ const Logo = () => (
       className="h-10 w-auto object-contain"
     />
     <div className="flex flex-col">
-      <h1 className="text-2xl lg:text-3xl font-bold tracking-wider text-white hover:text-orange-400 transition-colors">
-        OILEUM
-      </h1>
       <span className="text-xs text-slate-400 font-medium tracking-widest">
         ENGINEERING SOLUTIONS
       </span>
