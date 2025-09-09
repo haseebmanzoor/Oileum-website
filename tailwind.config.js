@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
+        sans: ["Montserrat", "sans-serif"],
       },
       colors: {
         primary: "#0A2540", // deep navy

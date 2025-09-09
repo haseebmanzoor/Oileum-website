@@ -104,14 +104,14 @@ const Hero = () => {
     <>
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden">
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="popLayout">
           <motion.div
             key={currentSlide}
             className="absolute inset-0"
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
           >
             <div
               className="absolute inset-0 bg-cover bg-center"
@@ -127,9 +127,10 @@ const Hero = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full">
             <motion.div
               key={currentSlide}
-              initial={{ y: 40, opacity: 0 }}
+              initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
               className="max-w-3xl space-y-8"
             >
               <div className="inline-flex items-center px-5 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg">

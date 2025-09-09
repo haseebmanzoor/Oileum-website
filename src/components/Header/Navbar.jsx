@@ -65,13 +65,13 @@ const Navbar = () => {
     <nav
       role="navigation"
       aria-label="Main navigation"
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 backdrop-blur-sm ${
         scrolled
-          ? "bg-[#181c2c] shadow-2xl border-b border-slate-700/50"
-          : "bg-[#181c2c]"
+          ? "bg-[#181c2c]/80 shadow-2xl border-b border-slate-700/50"
+          : "bg-[#181c2c]/70"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 py-2">
           {/* Logo */}
           <div className="flex-shrink-0 pl-4">
@@ -80,13 +80,13 @@ const Navbar = () => {
 
           {/* Desktop Nav and CTA */}
           <div className="hidden lg:flex items-center space-x-8">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-1">
               {navItems.map((item) => (
                 <NavItem key={item.name} item={item} />
               ))}
             </div>
             <Link to="/contact?inquiry=proposal">
-              <button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-6 py-2 rounded-xl font-semibold text-sm whitespace-nowrap transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:ring-2 focus:ring-orange-500 relative overflow-hidden group">
+              <button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-6 py-3 rounded-lg font-semibold text-md whitespace-nowrap transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:ring-2 focus:ring-orange-500 relative overflow-hidden group">
                 <span className="relative z-10">Request Proposal</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               </button>

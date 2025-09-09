@@ -108,9 +108,12 @@ export default function CoreServices() {
                         {service.title}
                       </h3>
                     </div>
-                    <ul className="text-gray-600 mb-8 list-disc pl-5 space-y-2">
+                    <ul className="text-gray-600 mb-6 flex-grow">
                       {service.description.map((point, i) => (
-                        <li key={i}>{point}</li>
+                        <li key={i} className="flex items-start mb-2">
+                          <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                          <span className="text-sm leading-relaxed">{point}</span>
+                        </li>
                       ))}
                     </ul>
                     <div className="flex items-center justify-between">
