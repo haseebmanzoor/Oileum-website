@@ -46,11 +46,17 @@ export default function AboutUs() {
             </div>
             <p className="text-lg text-gray-600 leading-relaxed">
               Oileum is a global provider of integrated engineering and
-              mechanical solutions, specializing in delivering safe, reliable,
-              and sustainable projects across oil & gas, petrochemicals, energy,
-              utilities, and heavy industries. With expertise in Process &
-              Mechanical Engineering, Procurement, Construction, Commissioning,
-              Start-up, and Chemical & Mechanical Solutions.
+              mechanical solutions, committed to delivering safe, reliable, and
+              sustainable projects across the oil & gas, petrochemical, energy,
+              utilities, and heavy industrial sectors. With proven expertise in
+              Process & Mechanical Engineering, Procurement, Construction,
+              Commissioning, and Start-up, Oileum ensures seamless project
+              execution from concept to completion. Our capabilities further
+              extend to specialized chemical and mechanical solutions, enabling
+              us to meet complex industrial challenges with efficiency and
+              innovation. Driven by a commitment to quality, safety, and
+              sustainability, Oileum partners with clients worldwide to deliver
+              engineering excellence and long-term value.
             </p>
           </motion.div>
 
@@ -115,7 +121,7 @@ export default function AboutUs() {
             </div>
             <div className="mt-10 text-right">
               <p className="font-bold text-lg text-gray-900">
-                Ikram Ullah Wazir
+                Ikram Ullah Khan Wazir
               </p>
               <p className="text-gray-600">Chief Executive Officer</p>
               <p className="text-gray-600">Oileum</p>
