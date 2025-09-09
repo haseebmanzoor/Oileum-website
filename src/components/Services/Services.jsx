@@ -40,7 +40,7 @@ const servicesData = [
     image: "/services/procurement.jpg",
   },
   {
-    title: "Construction Mastery",
+    title: "Construction & Commissioning",
     description: [
       "Mechanical, piping, structural, and civil construction",
       "Erection of heavy static & rotating equipment (pumps, turbines, compressors)",

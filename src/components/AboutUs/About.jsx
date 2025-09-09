@@ -44,19 +44,26 @@ export default function AboutUs() {
                 Company Profile
               </h3>
             </div>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 leading-relaxed mb-4">
               Oileum is a global provider of integrated engineering and
               mechanical solutions, committed to delivering safe, reliable, and
               sustainable projects across the oil & gas, petrochemical, energy,
-              utilities, and heavy industrial sectors. With proven expertise in
-              Process & Mechanical Engineering, Procurement, Construction,
-              Commissioning, and Start-up, Oileum ensures seamless project
-              execution from concept to completion. Our capabilities further
-              extend to specialized chemical and mechanical solutions, enabling
-              us to meet complex industrial challenges with efficiency and
-              innovation. Driven by a commitment to quality, safety, and
-              sustainability, Oileum partners with clients worldwide to deliver
-              engineering excellence and long-term value.
+              utilities, and heavy industrial sectors.
+            </p>
+
+            <p className="text-lg text-gray-600 leading-relaxed mb-4">
+              With proven expertise in Process & Mechanical Engineering,
+              Procurement, Construction, Commissioning, and Start-up, Oileum
+              ensures seamless project execution from concept to completion. Our
+              capabilities further extend to specialized chemical and mechanical
+              solutions, enabling us to meet complex industrial challenges with
+              efficiency and innovation.
+            </p>
+
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Driven by a commitment to quality, safety, and sustainability,
+              Oileum partners with clients worldwide to deliver engineering
+              excellence and long-term value.
             </p>
           </motion.div>
 
