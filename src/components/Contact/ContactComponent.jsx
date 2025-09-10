@@ -55,7 +55,7 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      value: "projects@oileum.ae",
+      value: "info@oileum.ae",
       link: "mailto:projects@oileum.ae",
     },
     {
