@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import Services from "../Services/Services";
+import CoreServices from "../Services/CoreServices";
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -104,14 +104,14 @@ const Hero = () => {
     <>
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden">
-        <AnimatePresence mode="popLayout">
+        <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
             className="absolute inset-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
           >
             <div
               className="absolute inset-0 bg-cover bg-center"
@@ -127,10 +127,9 @@ const Hero = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full">
             <motion.div
               key={currentSlide}
-              initial={{ y: 20, opacity: 0 }}
+              initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              transition={{ duration: 1, ease: "easeOut" }}
               className="max-w-3xl space-y-8"
             >
               <div className="inline-flex items-center px-5 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-lg">
@@ -161,8 +160,8 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <Services />
+      {/* ✅ Core Services Section */}
+      <CoreServices />
     </>
   );
 };

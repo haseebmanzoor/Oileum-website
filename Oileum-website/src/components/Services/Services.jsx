@@ -93,17 +93,6 @@ const servicesData = [
     image: "/services/environmental.jpg",
   },
   {
-    title: "Equipment and Component Supply",
-    description: [
-      "Pumps, compressors, valves, pipelines, turbines, motors & control systems (PLC/DCS) as per API, ASME, IEC & ISO standards.",
-      "Strong vendor network ensuring timely availability.",
-      "Cost-effective sourcing without compromising safety.",
-      "Guaranteed seamless integration for reliability & reduced downtime.",
-    ],
-    icon: Lightbulb,
-    image: "/services/equipment-supply.jpg",
-  },
-  {
     title: "Project Management",
     description: [
       "Comprehensive project controls",
@@ -163,7 +152,7 @@ export default function Services() {
                   </div>
 
                   {/* Content */}
-                  <div className="p-8 flex flex-col h-full">
+                  <div className="p-8">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
                         <IconComponent className="h-6 w-6 text-orange-500" />
@@ -172,30 +161,14 @@ export default function Services() {
                         {service.title}
                       </h3>
                     </div>
-                    <ul className="text-gray-600 mb-6 flex-grow">
+                    <ul className="text-gray-600 mb-8 list-disc pl-5 space-y-2">
                       {service.description.map((point, i) => (
-                        <li key={i} className="flex items-start mb-2">
-                          <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-sm leading-relaxed">
-                            {point}
-                          </span>
-                        </li>
+                        <li key={i}>{point}</li>
                       ))}
                     </ul>
-                    <div className="mt-auto">
-                      <div className="bg-gradient-to-r from-orange-100 to-amber-100 rounded-xl p-4 border border-orange-200 shadow-sm">
-                        <div className="flex items-center justify-between">
-                          <Link
-                            to="/contact"
-                            className="inline-flex items-center bg-white text-orange-600 font-semibold hover:text-orange-700 hover:bg-orange-50 px-4 py-2 rounded-lg transition-all duration-200 shadow-sm border border-orange-200"
-                          >
-                            Learn More
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </Link>
-                          <div className="text-orange-400 font-bold text-sm">
-                            {String(index + 1).padStart(2, "0")}
-                          </div>
-                        </div>
+                    <div className="flex items-center justify-end">
+                      <div className="text-gray-300 font-bold text-sm">
+                        {String(index + 1).padStart(2, "0")}
                       </div>
                     </div>
                   </div>
