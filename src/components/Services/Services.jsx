@@ -1,5 +1,5 @@
 // src/components/Services/Services.jsx
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -12,110 +12,219 @@ import {
   Droplets,
   Target,
   Lightbulb,
+  Settings,
+  Plus,
+  Minus,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const servicesData = [
   {
-    title: "Engineering Excellence",
+    title: "Engineering Services",
+    shortDesc:
+      "Comprehensive engineering solutions from design to implementation",
     description: [
-      "Front-End Engineering Design (FEED) and Detailed Engineering",
-      "Process simulation, optimization, and energy balance studies",
+      "Structural & Civil Engineering Design",
+      "Mechanical Static & Rotating Equipment Engineering Design",
+      "Electrical & Instrumentation Engineering",
+      "Front-End Engineering Design (FEED) & Detailed Engineering",
+      "Project Support & Technical Consultancy",
+      "Process Simulation, Optimization & Energy Studies",
       "Process Modification & Test Run Studies",
-      "Piping & instrumentation diagrams (P&IDs)",
-      "Advanced simulation tools for efficiency",
+      "Piping & Instrumentation Diagrams (P&IDs) & Documentation",
+      "Advanced Tools & Digital Engineering",
     ],
     icon: Wrench,
     image: "/services/engineering.jpg",
+    gradient: "from-blue-500 to-blue-600",
+    bgColor: "bg-blue-50",
+    iconColor: "text-blue-600",
   },
   {
-    title: "Strategic Procurement",
+    title: "Procurement & Material Management",
+    shortDesc: "Strategic sourcing and comprehensive supply chain solutions",
     description: [
-      "Global sourcing & vendor management",
-      "Quality assurance & inspection",
-      "Logistics & supply chain solutions",
-      "Cost-optimized procurement strategies",
+      "Strategic Sourcing & Supplier Management",
+      "Supplier Evaluation & Development",
+      "Inventory & Material Management",
+      "Comprehensive Logistics Management & Supply Chain Optimization",
+      "Cost-Effective Procurement & Contracting",
+      "Quality Assurance & Inspection",
+      "Advanced Material Tracking",
+      "Inventory & Storage Optimization",
     ],
     icon: Package,
     image: "/services/procurement.jpg",
+    gradient: "from-green-500 to-green-600",
+    bgColor: "bg-green-50",
+    iconColor: "text-green-600",
   },
   {
-    title: "Construction & Commissioning",
+    title: "Construction & Installation",
+    shortDesc: "Complete construction services with precision and safety",
     description: [
-      "Mechanical, piping, structural, and civil construction",
-      "Erection of heavy static & rotating equipment (pumps, turbines, compressors)",
-      "Pre-commissioning, commissioning, and system integration",
-      "Development of commissioning procedures and documentation",
+      "Mechanical, Piping & Structural Installation",
+      "Civil & Architectural Works",
+      "Equipment Erection & Alignment",
+      "Fabrication & Assembly",
+      "Pre-Commissioning Support",
+      "Project Management & Supervision",
+      "Safety & Compliance",
+      "Turnkey Solutions",
+      "Integration & Coordination",
     ],
     icon: Building2,
     image: "/services/construction.jpg",
+    gradient: "from-orange-500 to-orange-600",
+    bgColor: "bg-orange-50",
+    iconColor: "text-orange-600",
   },
   {
-    title: "Chemical Engineering",
+    title: "Commissioning & Start-Up Support",
+    shortDesc: "Expert commissioning and seamless start-up operations",
     description: [
-      "Rotating & static equipment maintenance",
-      "Rotating & static equipment maintenance",
-      "Welding, fabrication & repair works",
-      "Shutdown & turnaround maintenance",
-      "Condition monitoring & troubleshooting",
+      "Pre-Commissioning Activities",
+      "Equipment Calibration & Functional Testing",
+      "System Integration & Performance Validation",
+      "Operational Readiness & Handover",
+      "Start-Up Support",
+      "Process Optimization During Start-Up",
+      "Training & Performance Test Run",
+    ],
+    icon: Settings,
+    image: "/services/commissioning.jpg",
+    gradient: "from-purple-500 to-purple-600",
+    bgColor: "bg-purple-50",
+    iconColor: "text-purple-600",
+  },
+  {
+    title: "Chemical Process & Operational Solutions",
+    shortDesc: "Advanced process optimization and operational excellence",
+    description: [
+      "Process Design & Optimization",
+      "Process Troubleshooting & Improvement",
+      "Plant Operation Support",
+      "Process Safety & Risk Management",
+      "Process Monitoring & Control",
+      "Chemical Reaction & Unit Studies",
+      "Technical Documentation & SOPs",
+      "Energy & Sustainability Solutions",
     ],
     icon: FlaskRound,
     image: "/services/chemical-solutions.jpg",
+    gradient: "from-red-500 to-red-600",
+    bgColor: "bg-red-50",
+    iconColor: "text-red-600",
   },
   {
-    title: "Operations & Maintenance",
+    title: "Mechanical & Maintenance Solutions",
+    shortDesc: "Comprehensive maintenance services for optimal performance",
     description: [
-      "Comprehensive O&M services",
-      "Ensures optimal performance",
-      "Covers full asset lifecycle",
+      "Preventive & Predictive Maintenance",
+      "Rotating Equipment Maintenance",
+      "Static Equipment Maintenance",
+      "Equipment Installation & Commissioning Support",
+      "Maintenance Planning & Optimization",
+      "Mechanical Fabrication & Repairs",
+      "Condition Monitoring & Diagnostics",
+      "Spare Parts Management",
     ],
     icon: Cog,
     image: "/services/maintenance.jpg",
+    gradient: "from-indigo-500 to-indigo-600",
+    bgColor: "bg-indigo-50",
+    iconColor: "text-indigo-600",
   },
   {
-    title: "Heat Exchanger Services",
+    title: "Equipment & Parts Supplies",
+    shortDesc: "Premium equipment supply with comprehensive support",
     description: [
-      "Complete solutions from design to maintenance",
-      "ASME compliance",
-      "Reliable performance",
-    ],
-    icon: Zap,
-    image: "/services/heat-exchanger.jpg",
-  },
-  {
-    title: "Environmental Solutions",
-    description: [
-      "Advanced effluent treatment",
-      "Sustainable operations",
-      "Environmental compliance",
-    ],
-    icon: Droplets,
-    image: "/services/environmental.jpg",
-  },
-  {
-    title: "Equipment and Component Supply",
-    description: [
-      "Pumps, compressors, valves, pipelines, turbines, motors & control systems (PLC/DCS) as per API, ASME, IEC & ISO standards.",
-      "Strong vendor network ensuring timely availability.",
-      "Cost-effective sourcing without compromising safety.",
-      "Guaranteed seamless integration for reliability & reduced downtime.",
+      "Premium supply of pumps, compressors, valves, pipelines, turbines, motors, and control systems meeting API, ASME, IEC & ISO standards",
+      "Refinery-specific equipment",
+      "Comprehensive Equipment Supply & Critical Spare Parts",
+      "Quality Assurance & Certification",
+      "Cost-optimized sourcing strategies",
+      "Customized Supply Packages",
+      "Strategic spare parts management programs",
+      "Logistics & Delivery Support",
+      "Comprehensive aftermarket support & Technical Assistance",
     ],
     icon: Lightbulb,
     image: "/services/equipment-supply.jpg",
+    gradient: "from-yellow-500 to-yellow-600",
+    bgColor: "bg-yellow-50",
+    iconColor: "text-yellow-600",
   },
   {
-    title: "Project Management",
+    title: "Project Management & Project Consultancy",
+    shortDesc: "End-to-end project management and expert consultancy services",
     description: [
-      "Comprehensive project controls",
-      "From conception to completion",
-      "Efficient delivery",
+      "Comprehensive Project Planning",
+      "Project Feasibility Studies",
+      "Cost Estimation & Budget Management",
+      "Risk Assessment & Mitigation",
+      "Quality Assurance & Compliance",
+      "Multi-Discipline Coordination",
+      "Contract Management & Procurement Oversight",
+      "Monitoring & Reporting",
+      "Technical Consultancy & Advisory Services",
     ],
     icon: Target,
     image: "/services/project-management.jpg",
+    gradient: "from-teal-500 to-teal-600",
+    bgColor: "bg-teal-50",
+    iconColor: "text-teal-600",
+  },
+  {
+    title: "Environmental & Safety Solutions",
+    shortDesc: "Comprehensive environmental compliance and safety management",
+    description: [
+      "Environmental Compliance & Audits",
+      "Pollution Control & Waste Management",
+      "Health, Safety & Environmental (HSE) Programs",
+      "Risk Assessment & Hazard Analysis",
+      "Emergency Response Planning",
+      "Sustainable Practices & Energy Efficiency",
+      "Environmental Monitoring & Reporting",
+      "Workplace Safety Management",
+      "Work Permit Systems",
+      "Safety Studies Like HAZOP, SIL",
+    ],
+    icon: Droplets,
+    image: "/services/environmental.jpg",
+    gradient: "from-cyan-500 to-cyan-600",
+    bgColor: "bg-cyan-50",
+    iconColor: "text-cyan-600",
+  },
+  {
+    title: "Heat Exchanger Design & Fabrication Services",
+    shortDesc: "Custom heat exchanger solutions with expert fabrication",
+    description: [
+      "Custom Design Solutions",
+      "Thermal & Mechanical Analysis",
+      "Material Selection & Compatibility",
+      "Fabrication & Assembly",
+      "Quality Assurance & Testing",
+      "Performance Optimization",
+      "Chemical and Maintenance Cleaning Services",
+      "Compliance with Standards",
+      "Technical Consultancy & Support",
+    ],
+    icon: Zap,
+    image: "/services/heat-exchanger.jpg",
+    gradient: "from-pink-500 to-pink-600",
+    bgColor: "bg-pink-50",
+    iconColor: "text-pink-600",
   },
 ];
 
 export default function Services() {
+  const [expandedCard, setExpandedCard] = useState(null);
+
+  const toggleCard = (index) => {
+    setExpandedCard(expandedCard === index ? null : index);
+  };
+
   return (
     <section
       className="py-24 relative overflow-hidden"
@@ -142,60 +251,113 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {servicesData.map((service, index) => {
             const IconComponent = service.icon;
+            const isExpanded = expandedCard === index;
+
             return (
               <motion.div
                 key={index}
                 className="group cursor-pointer"
-                whileHover={{ y: -12, scale: 1.02 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                layout
               >
-                <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden h-full border border-gray-100 group-hover:border-orange-200">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden h-full border border-gray-100 group-hover:border-orange-200">
                   {/* Image */}
-                  <div className="h-48 w-full overflow-hidden">
+                  <div className="h-40 w-full overflow-hidden relative">
                     <img
                       src={service.image}
                       alt={service.title}
                       className="w-full h-full object-cover transform group-hover:scale-110 transition duration-700"
                     />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-t ${service.gradient} opacity-20`}
+                    ></div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-8 flex flex-col h-full">
+                  <div className="p-6">
+                    {/* Header */}
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
-                        <IconComponent className="h-6 w-6 text-orange-500" />
+                      <div
+                        className={`w-12 h-12 ${service.bgColor} rounded-xl flex items-center justify-center`}
+                      >
+                        <IconComponent
+                          className={`h-6 w-6 ${service.iconColor}`}
+                        />
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900">
-                        {service.title}
-                      </h3>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold text-gray-900 leading-tight">
+                          {service.title}
+                        </h3>
+                      </div>
                     </div>
-                    <ul className="text-gray-600 mb-6 flex-grow">
-                      {service.description.map((point, i) => (
-                        <li key={i} className="flex items-start mb-2">
-                          <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-sm leading-relaxed">
-                            {point}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-auto">
-                      <div className="bg-gradient-to-r from-orange-100 to-amber-100 rounded-xl p-4 border border-orange-200 shadow-sm">
-                        <div className="flex items-center justify-between">
-                          <Link
-                            to="/contact"
-                            className="inline-flex items-center bg-white text-orange-600 font-semibold hover:text-orange-700 hover:bg-orange-50 px-4 py-2 rounded-lg transition-all duration-200 shadow-sm border border-orange-200"
-                          >
-                            Learn More
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                          </Link>
-                          <div className="text-orange-400 font-bold text-sm">
-                            {String(index + 1).padStart(2, "0")}
-                          </div>
-                        </div>
+
+                    {/* Short Description */}
+                    <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                      {service.shortDesc}
+                    </p>
+
+                    {/* Expandable Content */}
+                    <motion.div
+                      initial={false}
+                      animate={{ height: isExpanded ? "auto" : "0" }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <ul className="text-gray-600 mb-4">
+                        {service.description.map((point, i) => (
+                          <li key={i} className="flex items-start mb-2">
+                            <div
+                              className={`w-1.5 h-1.5 ${service.iconColor.replace(
+                                "text-",
+                                "bg-"
+                              )} rounded-full mt-2 mr-2 flex-shrink-0`}
+                            ></div>
+                            <span className="text-xs leading-relaxed">
+                              {point}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+
+                    {/* Action Buttons */}
+                    <div className="flex items-center justify-between gap-3">
+                      <button
+                        onClick={() => toggleCard(index)}
+                        className={`flex items-center text-xs font-semibold px-3 py-2 rounded-lg transition-all duration-200 ${service.iconColor} hover:bg-gray-50`}
+                      >
+                        {isExpanded ? (
+                          <>
+                            <Minus className="h-3 w-3 mr-1" />
+                            Show Less
+                          </>
+                        ) : (
+                          <>
+                            <Plus className="h-3 w-3 mr-1" />
+                            View Details
+                          </>
+                        )}
+                      </button>
+
+                      <Link
+                        to="/contact"
+                        className={`inline-flex items-center ${service.iconColor} font-semibold hover:opacity-80 text-xs`}
+                      >
+                        Get Quote
+                        <ArrowRight className="ml-1 h-3 w-3" />
+                      </Link>
+                    </div>
+
+                    {/* Card Number */}
+                    <div className="absolute top-4 right-4">
+                      <div className="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm">
+                        <span className="text-xs font-bold text-gray-600">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
                       </div>
                     </div>
                   </div>
