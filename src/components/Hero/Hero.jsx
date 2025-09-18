@@ -12,7 +12,7 @@ const Hero = () => {
       title: "World-Class Engineering Solutions",
       subtitle: "Design • Procurement • Commissioning",
       description:
-        "At Oileum, we provide end-to-end EPC and mechanical services for the oil, gas, petrochemical, and industrial sectors.",
+        "At Oileum, we provide world-class Engineering Services for the Oil & Gas, Petrochemical, and large manufacturing Industrial sectors. Our commitment is to deliver sustainable, cost-effective, and reliable solutions that keep industries moving.  With decades of combined engineering expertise, our team has successfully executed projects ranging from small-scale plant upgrades to multi-billion-dollar EPC projects. We pride ourselves on adaptability, technical depth, and an uncompromising focus on QHSE (Quality, Health, Safety, and Environment) standards.",
       cta: { text: "Explore Our Services", link: "/services" },
       background: "/hero/engineering-design.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
