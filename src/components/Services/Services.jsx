@@ -221,10 +221,14 @@ const servicesData = [
 ];
 
 export default function Services() {
-  const [expandedCard, setExpandedCard] = useState(null);
+  const [expandedCards, setExpandedCards] = useState([]);
 
   const toggleCard = (index) => {
-    setExpandedCard(expandedCard === index ? null : index);
+    setExpandedCards((prev) =>
+      prev.includes(index)
+        ? prev.filter((cardIndex) => cardIndex !== index)
+        : [...prev, index]
+    );
   };
 
   return (
@@ -256,7 +260,7 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {servicesData.map((service, index) => {
             const IconComponent = service.icon;
-            const isExpanded = expandedCard === index;
+            const isExpanded = expandedCards.includes(index);
 
             return (
               <motion.div
