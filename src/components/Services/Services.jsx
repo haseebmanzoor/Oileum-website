@@ -109,6 +109,8 @@ const servicesData = [
       "Chemical Reaction & Unit Studies",
       "Technical Documentation & SOPs",
       "Energy & Sustainability Solutions",
+      "Chemical cleaning and system flushing solutions",
+      "Lube Oil Flushing Services",
     ],
     icon: FlaskRound,
     image: "/services/chemical-solutions.jpg",

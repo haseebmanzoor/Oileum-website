@@ -34,7 +34,7 @@ function Footer() {
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-orange-400 mr-3" />
-                <span>projects@oileum.ae</span>
+                <span>info@oileum.ae</span>
               </div>
               <div className="flex space-x-4 mt-4">
                 {[Linkedin, Twitter, Facebook, Instagram].map((Icon, idx) => (
