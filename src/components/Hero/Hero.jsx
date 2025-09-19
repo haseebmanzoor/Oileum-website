@@ -11,8 +11,11 @@ const Hero = () => {
     {
       title: "World-Class Engineering Solutions",
       subtitle: "Design • Procurement • Commissioning",
-      description:
-        "At Oileum, we provide world-class Engineering Services for the Oil & Gas, Petrochemical, and large manufacturing Industrial sectors. Our commitment is to deliver sustainable, cost-effective, and reliable solutions that keep industries moving.  With decades of combined engineering expertise, our team has successfully executed projects ranging from small-scale plant upgrades to multi-billion-dollar EPC projects. We pride ourselves on adaptability, technical depth, and an uncompromising focus on QHSE (Quality, Health, Safety, and Environment) standards.",
+      description: [
+        "At Oileum, we provide world-class Engineering Services for Oil & Gas, Petrochemical, and Industrial sectors, delivering sustainable, cost-effective solutions that keep industries moving.",
+        "With decades of expertise, our team executes projects from small-scale upgrades to multi-billion-dollar EPC contracts.",
+        "We pride ourselves on adaptability, technical depth, and uncompromising focus on QHSE standards.",
+      ],
       cta: { text: "Explore Our Services", link: "/services" },
       background: "/hero/engineering-design.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
@@ -20,8 +23,9 @@ const Hero = () => {
     {
       title: "Sustainable & Reliable",
       subtitle: "Cost-Effective Engineering",
-      description:
+      description: [
         "Our commitment is to deliver sustainable, reliable, and value-driven solutions that keep industries moving forward.",
+      ],
       cta: { text: "View Our Projects", link: "/projects" },
       background: "/hero/procurement.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
@@ -29,8 +33,9 @@ const Hero = () => {
     {
       title: "Partner in Industrial Success",
       subtitle: "Beyond Service Provider",
-      description:
-        "Oileum is not just a service provider—it’s a long-term partner in driving industrial success and operational excellence.",
+      description: [
+        "Oileum is not just a service provider—it's a long-term partner in driving industrial success and operational excellence.",
+      ],
       cta: { text: "About Oileum", link: "/about" },
       background: "/hero/industrial-success.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
@@ -38,8 +43,9 @@ const Hero = () => {
     {
       title: "Decades of Engineering Expertise",
       subtitle: "Proven Global Track Record",
-      description:
+      description: [
         "Our expert team has successfully executed projects ranging from small-scale upgrades to multi-billion-dollar EPC contracts.",
+      ],
       cta: { text: "Our Experience", link: "/projects" },
       background: "/hero/commissioning.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
@@ -47,8 +53,9 @@ const Hero = () => {
     {
       title: "Commitment to QHSE Standards",
       subtitle: "Quality • Health • Safety • Environment",
-      description:
+      description: [
         "We pride ourselves on adaptability, technical depth, and an uncompromising focus on global QHSE standards.",
+      ],
       cta: { text: "Learn More", link: "/about" },
       background: "/hero/qhse-standards.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
@@ -56,8 +63,9 @@ const Hero = () => {
     {
       title: "Innovating Engineering Solutions",
       subtitle: "Delivering Excellence Worldwide",
-      description:
+      description: [
         "With innovation at our core, Oileum continues to deliver world-class engineering solutions across the globe.",
+      ],
       cta: { text: "Explore More", link: "/services" },
       background: "/hero/mechanical-services.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
@@ -65,8 +73,9 @@ const Hero = () => {
     {
       title: "Global Supply Chain Strength",
       subtitle: "Trusted Vendor Network",
-      description:
+      description: [
         "We leverage a global supply chain and trusted vendor network to ensure seamless procurement and delivery.",
+      ],
       cta: { text: "Our Network", link: "/about" },
       background: "/hero/global-network.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
@@ -74,8 +83,9 @@ const Hero = () => {
     {
       title: "Large-Scale Project Success",
       subtitle: "Mega EPC Contracts",
-      description:
+      description: [
         "With a proven track record in large-scale projects, Oileum continues to be a trusted partner worldwide.",
+      ],
       cta: { text: "View Projects", link: "/projects" },
       background: "/hero/large-projects.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
@@ -83,8 +93,9 @@ const Hero = () => {
     {
       title: "Experienced Engineering Team",
       subtitle: "Specialists You Can Trust",
-      description:
+      description: [
         "Our team of experienced engineers and specialists bring technical depth, innovation, and precision to every project.",
+      ],
       cta: { text: "Meet Our Team", link: "/about" },
       background: "/hero/experienced-team.jpg",
       overlay: "from-slate-900/80 via-slate-900/50 to-transparent",
@@ -141,9 +152,16 @@ const Hero = () => {
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight text-white drop-shadow-lg">
                 {currentSlideData.title}
               </h1>
-              <p className="text-lg lg:text-xl text-white/90 leading-relaxed max-w-2xl">
-                {currentSlideData.description}
-              </p>
+              <div className="space-y-4 max-w-2xl">
+                {currentSlideData.description.map((paragraph, index) => (
+                  <p
+                    key={index}
+                    className="text-lg lg:text-xl text-white/90 leading-relaxed"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
               <div className="flex flex-wrap gap-6">
                 <Link to={currentSlideData.cta.link}>
                   <motion.button

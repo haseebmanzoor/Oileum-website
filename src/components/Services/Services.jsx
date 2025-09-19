@@ -307,16 +307,16 @@ export default function Services() {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <ul className="text-gray-600 mb-4">
+                      <ul className="text-gray-600 mb-4 space-y-2.5">
                         {service.description.map((point, i) => (
-                          <li key={i} className="flex items-start mb-2">
+                          <li key={i} className="flex items-start">
                             <div
                               className={`w-1.5 h-1.5 ${service.iconColor.replace(
                                 "text-",
                                 "bg-"
-                              )} rounded-full mt-2 mr-2 flex-shrink-0`}
+                              )} rounded-full mt-2 mr-3 flex-shrink-0`}
                             ></div>
-                            <span className="text-xs leading-relaxed">
+                            <span className="text-xs leading-relaxed text-gray-700">
                               {point}
                             </span>
                           </li>
