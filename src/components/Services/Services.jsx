@@ -15,6 +15,7 @@ import {
   Settings,
   Plus,
   Minus,
+  Activity,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -217,6 +218,28 @@ const servicesData = [
     gradient: "from-pink-500 to-pink-600",
     bgColor: "bg-pink-50",
     iconColor: "text-pink-600",
+  },
+  {
+    title: "Pipeline Engineering, Construction & Installation",
+    shortDesc: "Specialized pipeline services from design through maintenance",
+    description: [
+      "Engineering & Design",
+      "Procurement & Supply Chain Management",
+      "Fabrication & Prefabrication Works",
+      "Site Preparation & Civil Construction",
+      "Pipeline Installation & Construction",
+      "Testing & Commissioning",
+      "Coating, Insulation & Corrosion Protection",
+      "Quality Assurance, Safety & Compliance",
+      "Maintenance, Repair & Integrity Monitoring",
+      "Civil, Structural & Auxiliary Works",
+      "Project Logistics & Support Services",
+    ],
+    icon: Activity,
+    image: "/services/pipeline-engineering.jpg",
+    gradient: "from-emerald-500 to-emerald-600",
+    bgColor: "bg-emerald-50",
+    iconColor: "text-emerald-600",
   },
 ];
 
