@@ -225,7 +225,7 @@ export default function Careers() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-orange-500" />
-                <span className="text-gray-700">+971 50 2250</span>
+                <span className="text-gray-700">+971 50 149 2250</span>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-orange-500 mt-1" />
