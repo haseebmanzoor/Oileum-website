@@ -220,7 +220,7 @@ export default function Careers() {
                   href="mailto:projects@oileum.ae"
                   className="text-orange-500 font-semibold hover:underline"
                 >
-                  projects@oileum.ae
+                  career@oileum.ae
                 </a>
               </div>
               <div className="flex items-center gap-3">

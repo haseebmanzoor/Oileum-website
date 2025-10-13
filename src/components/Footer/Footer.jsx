@@ -30,7 +30,7 @@ function Footer() {
               </div>
               <div className="flex items-center">
                 <Phone className="h-5 w-5 text-orange-400 mr-3" />
-                <span>+971 50 2250</span>
+                <span>+971 50 149 2250</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-orange-400 mr-3" />

@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
 import NavItem from "./NavItem";
 import MobileMenu from "./MobileMenu";
+import ServicesPopup from "./ServicesPopup"; // ✅ import popup
 
 const CONTACT_INFO = {
   phone: "+971 4 123-4567",
@@ -15,6 +16,7 @@ const CONTACT_INFO = {
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showServicesPopup, setShowServicesPopup] = useState(false); // ✅ popup state
   const location = useLocation();
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const Navbar = () => {
     {
       name: "Services",
       href: "/services",
-      isActive: location.pathname === "/services",
+      isActive: location.pathname.startsWith("/services"),
     },
     {
       name: "Clients",
@@ -62,62 +64,82 @@ const Navbar = () => {
   ];
 
   return (
-    <nav
-      role="navigation"
-      aria-label="Main navigation"
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 backdrop-blur-sm ${
-        scrolled
-          ? "bg-[#181c2c]/80 shadow-2xl border-b border-slate-700/50"
-          : "bg-[#181c2c]/70"
-      }`}
-    >
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 py-2">
-          {/* Logo */}
-          <div className="flex-shrink-0 pl-4">
-            <Logo />
-          </div>
-
-          {/* Desktop Nav and CTA */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <div className="flex items-center space-x-1">
-              {navItems.map((item) => (
-                <NavItem key={item.name} item={item} />
-              ))}
+    <>
+      <nav
+        role="navigation"
+        aria-label="Main navigation"
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 backdrop-blur-sm ${
+          scrolled
+            ? "bg-[#181c2c]/80 shadow-2xl border-b border-slate-700/50"
+            : "bg-[#181c2c]/70"
+        }`}
+      >
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20 py-2">
+            {/* Logo */}
+            <div className="flex-shrink-0 pl-4">
+              <Logo />
             </div>
-            <Link to="/contact?inquiry=proposal">
-              <button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-6 py-3 rounded-lg font-semibold text-md whitespace-nowrap transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:ring-2 focus:ring-orange-500 relative overflow-hidden group">
-                <span className="relative z-10">Request Proposal</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+
+            {/* Desktop Nav and CTA */}
+            <div className="hidden lg:flex items-center space-x-8">
+              <div className="flex items-center space-x-1">
+                {navItems.map((item) =>
+                  item.name === "Services" ? (
+                    <button
+                      key={item.name}
+                      onClick={() => setShowServicesPopup(true)}
+                      className={`text-slate-300 hover:text-amber-400 font-medium transition-colors ${
+                        item.isActive ? "text-amber-400" : ""
+                      }`}
+                    >
+                      {item.name}
+                    </button>
+                  ) : (
+                    <NavItem key={item.name} item={item} />
+                  )
+                )}
+              </div>
+              <Link to="/contact?inquiry=proposal">
+                <button className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-6 py-3 rounded-lg font-semibold text-md whitespace-nowrap transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:ring-2 focus:ring-orange-500 relative overflow-hidden group">
+                  <span className="relative z-10">Request Proposal</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                </button>
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden pr-4">
+              <button
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-slate-300 hover:text-white hover:bg-slate-800 p-2 rounded-md transition-colors"
+              >
+                {mobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
-            </Link>
+            </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="lg:hidden pr-4">
-            <button
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-slate-300 hover:text-white hover:bg-slate-800 p-2 rounded-md transition-colors"
-            >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
+          {/* Mobile Menu */}
+          <MobileMenu
+            navItems={navItems}
+            mobileMenuOpen={mobileMenuOpen}
+            setMobileMenuOpen={setMobileMenuOpen}
+            contact={CONTACT_INFO}
+          />
         </div>
+      </nav>
 
-        {/* Mobile Menu */}
-        <MobileMenu
-          navItems={navItems}
-          mobileMenuOpen={mobileMenuOpen}
-          setMobileMenuOpen={setMobileMenuOpen}
-          contact={CONTACT_INFO}
-        />
-      </div>
-    </nav>
+      {/* ✅ Services Popup */}
+      <ServicesPopup
+        open={showServicesPopup}
+        onClose={() => setShowServicesPopup(false)}
+      />
+    </>
   );
 };
 

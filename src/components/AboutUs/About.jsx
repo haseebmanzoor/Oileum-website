@@ -80,7 +80,7 @@ export default function AboutUs() {
                 <User className="h-7 w-7 text-orange-500" />
               </div>
               <h3 className="text-3xl font-bold text-gray-900">
-                CEO's Message
+                Head of Strategy
               </h3>
             </div>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">

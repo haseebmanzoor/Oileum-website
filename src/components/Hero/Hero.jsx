@@ -1,6 +1,7 @@
+// src/components/Hero/Hero.jsx
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import Services from "../Services/Services";
 
@@ -9,7 +10,7 @@ const Hero = () => {
 
   const slides = [
     {
-      title: "World-Class Engineering Solutions",
+      title: "Engineering Services",
       subtitle: "Design • Procurement • Commissioning",
       description: [
         "At Oileum, we provide world-class Engineering Services for Oil & Gas, Petrochemical, and Industrial sectors, delivering sustainable, cost-effective solutions that keep industries moving.",
@@ -111,11 +112,19 @@ const Hero = () => {
 
   const currentSlideData = slides[currentSlide];
 
+  const handlePrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
   return (
     <>
       {/* Hero Section */}
       <section className="relative h-screen w-full overflow-hidden">
-        <AnimatePresence mode="popLayout">
+        <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
             className="absolute inset-0"
@@ -134,6 +143,46 @@ const Hero = () => {
           </motion.div>
         </AnimatePresence>
 
+        {/* Navigation Arrows */}
+        <div className="absolute inset-0 flex items-center justify-between px-4 md:px-8 z-20 pointer-events-none">
+          <motion.button
+            whileHover={{ scale: 1.1, x: -5 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handlePrevSlide}
+            className="pointer-events-auto bg-white/20 hover:bg-white/40 backdrop-blur-sm p-3 md:p-4 rounded-full border border-white/30 shadow-xl transition-all duration-300 group"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="h-6 w-6 md:h-8 md:w-8 text-white group-hover:text-orange-400 transition-colors" />
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.1, x: 5 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={handleNextSlide}
+            className="pointer-events-auto bg-white/20 hover:bg-white/40 backdrop-blur-sm p-3 md:p-4 rounded-full border border-white/30 shadow-xl transition-all duration-300 group"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="h-6 w-6 md:h-8 md:w-8 text-white group-hover:text-orange-400 transition-colors" />
+          </motion.button>
+        </div>
+
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? "w-12 bg-orange-500"
+                  : "w-2 bg-white/40 hover:bg-white/60"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Slide Content */}
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full">
             <motion.div
@@ -162,7 +211,7 @@ const Hero = () => {
                   </p>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-6">
+              {/* <div className="flex flex-wrap gap-6">
                 <Link to={currentSlideData.cta.link}>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
@@ -173,7 +222,7 @@ const Hero = () => {
                     <ChevronRight className="ml-2 h-5 w-5" />
                   </motion.button>
                 </Link>
-              </div>
+              </div> */}
             </motion.div>
           </div>
         </div>

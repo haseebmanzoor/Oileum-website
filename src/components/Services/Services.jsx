@@ -220,17 +220,21 @@ const servicesData = [
     iconColor: "text-pink-600",
   },
   {
-    title: "Pipeline Engineering, Construction & Installation",
-    shortDesc: "Specialized pipeline services from design through maintenance",
+    title: "Piping Engineering, Construction & Installation Services",
+    shortDesc:
+      "Oileum Engineering Services offers complete Engineering, Design, and Construction Solutions for pipeline and plant systems in refinery, petrochemical, and oil & gas facilities.",
     description: [
-      "Engineering & Design",
+      "Plot Plans & 2D/3D Modelling",
+      "Piping Lay-Outing & Material Specifications",
+      "Piping Stress Analysis",
+      "Isometric Drawings Generation",
+      "Data Sheets Generation",
       "Procurement & Supply Chain Management",
       "Fabrication & Prefabrication Works",
       "Site Preparation & Civil Construction",
       "Pipeline Installation & Construction",
       "Testing & Commissioning",
       "Coating, Insulation & Corrosion Protection",
-      "Quality Assurance, Safety & Compliance",
       "Maintenance, Repair & Integrity Monitoring",
       "Civil, Structural & Auxiliary Works",
       "Project Logistics & Support Services",
@@ -240,6 +244,29 @@ const servicesData = [
     gradient: "from-emerald-500 to-emerald-600",
     bgColor: "bg-emerald-50",
     iconColor: "text-emerald-600",
+  },
+
+  {
+    title: "Gas & Steam Turbine Mechanical Maintenance and Services",
+    shortDesc:
+      "Specialized mechanical maintenance and technical support for turbines",
+    description: [
+      "Specialized mechanical maintenance and technical support for Gas and Steam Turbines used in refineries, petrochemical, and power generation plants",
+      "Turbine Maintenance",
+      "Inspection & Condition Assessment",
+      "Overhauling & Reconditioning",
+      "Component Repair & Replacement",
+      "Alignment & Balancing Services",
+      "Performance Optimization",
+      "Emergency Maintenance & Field Services",
+      "Spare Parts Management",
+      "Quality Assurance & Compliance",
+    ],
+    icon: Cog,
+    image: "/services/turbine-maintenance.jpg",
+    gradient: "from-slate-500 to-slate-600",
+    bgColor: "bg-slate-50",
+    iconColor: "text-slate-600",
   },
 ];
 
