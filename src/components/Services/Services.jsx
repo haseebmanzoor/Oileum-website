@@ -22,6 +22,7 @@ import { Link } from "react-router-dom";
 const servicesData = [
   {
     title: "Engineering Services",
+    slug: "engineering-services",
     shortDesc:
       "Comprehensive engineering solutions from design to implementation",
     description: [
@@ -43,6 +44,7 @@ const servicesData = [
   },
   {
     title: "Procurement & Material Management",
+    slug: "procurement-material-management",
     shortDesc: "Strategic sourcing and comprehensive supply chain solutions",
     description: [
       "Strategic Sourcing & Supplier Management",
@@ -62,6 +64,7 @@ const servicesData = [
   },
   {
     title: "Construction & Installation",
+    slug: "construction-installation",
     shortDesc: "Complete construction services with precision and safety",
     description: [
       "Mechanical, Piping & Structural Installation",
@@ -82,6 +85,7 @@ const servicesData = [
   },
   {
     title: "Commissioning & Start-Up Support",
+    slug: "commissioning-startup-support",
     shortDesc: "Expert commissioning and seamless start-up operations",
     description: [
       "Pre-Commissioning Activities",
@@ -100,6 +104,7 @@ const servicesData = [
   },
   {
     title: "Chemical Process & Operational Solutions",
+    slug: "chemical-process-operational-solutions",
     shortDesc: "Advanced process optimization and operational excellence",
     description: [
       "Process Design & Optimization",
@@ -121,6 +126,7 @@ const servicesData = [
   },
   {
     title: "Mechanical & Maintenance Solutions",
+    slug: "mechanical-maintenance-solutions",
     shortDesc: "Comprehensive maintenance services for optimal performance",
     description: [
       "Preventive & Predictive Maintenance",
@@ -140,6 +146,7 @@ const servicesData = [
   },
   {
     title: "Equipment & Parts Supplies",
+    slug: "equipment-parts-supplies",
     shortDesc: "Premium equipment supply with comprehensive support",
     description: [
       "Premium supply of pumps, compressors, valves, pipelines, turbines, motors, and control systems meeting API, ASME, IEC & ISO standards",
@@ -160,6 +167,7 @@ const servicesData = [
   },
   {
     title: "Project Management & Project Consultancy",
+    slug: "project-management-consultancy",
     shortDesc: "End-to-end project management and expert consultancy services",
     description: [
       "Comprehensive Project Planning",
@@ -180,6 +188,7 @@ const servicesData = [
   },
   {
     title: "Environmental & Safety Solutions",
+    slug: "environmental-safety-solutions",
     shortDesc: "Comprehensive environmental compliance and safety management",
     description: [
       "Environmental Compliance & Audits",
@@ -201,6 +210,7 @@ const servicesData = [
   },
   {
     title: "Heat Exchanger Design & Fabrication Services",
+    slug: "heat-exchanger-design-fabrication",
     shortDesc: "Custom heat exchanger solutions with expert fabrication",
     description: [
       "Custom Design Solutions",
@@ -220,24 +230,22 @@ const servicesData = [
     iconColor: "text-pink-600",
   },
   {
-    title: "Piping Engineering, Construction & Installation Services",
+    title: "Pipeline Engineering, Construction & Integrity Services",
+    slug: "piping-services",
     shortDesc:
-      "Oileum Engineering Services offers complete Engineering, Design, and Construction Solutions for pipeline and plant systems in refinery, petrochemical, and oil & gas facilities.",
+      "Oileum Engineering Services delivers complete pipeline solutions—from design and construction to testing and maintenance for plant and cross-country pipelines.",
     description: [
-      "Plot Plans & 2D/3D Modelling",
-      "Piping Lay-Outing & Material Specifications",
-      "Piping Stress Analysis",
-      "Isometric Drawings Generation",
-      "Data Sheets Generation",
-      "Procurement & Supply Chain Management",
+      "Route & Alignment Engineering",
+      "Pipeline 2D/3D Modelling",
+      "Pipeline Material Specifications",
+      "Pipeline Stress Analysis",
       "Fabrication & Prefabrication Works",
-      "Site Preparation & Civil Construction",
-      "Pipeline Installation & Construction",
-      "Testing & Commissioning",
+      "Pipeline Construction & Installation",
       "Coating, Insulation & Corrosion Protection",
-      "Maintenance, Repair & Integrity Monitoring",
-      "Civil, Structural & Auxiliary Works",
-      "Project Logistics & Support Services",
+      "Testing & Commissioning",
+      "Civil & Structural Works",
+      "Procurement & Supply Chain Management",
+      "Quality Assurance, Safety & Compliance",
     ],
     icon: Activity,
     image: "/services/pipeline-engineering.jpg",
@@ -245,9 +253,9 @@ const servicesData = [
     bgColor: "bg-emerald-50",
     iconColor: "text-emerald-600",
   },
-
   {
     title: "Gas & Steam Turbine Mechanical Maintenance and Services",
+    slug: "turbine-maintenance",
     shortDesc:
       "Specialized mechanical maintenance and technical support for turbines",
     description: [
@@ -267,6 +275,26 @@ const servicesData = [
     gradient: "from-slate-500 to-slate-600",
     bgColor: "bg-slate-50",
     iconColor: "text-slate-600",
+  },
+  {
+    title: "Chemical Cleaning, Flushing & Lube Oil Flushing System",
+    slug: "chemical-cleaning",
+    shortDesc:
+      "Expert cleaning and flushing solutions for corrosion prevention and peak performance.",
+    description: [
+      "Chemical Cleaning Services",
+      "System Flushing Services",
+      "Lube Oil Flushing System",
+      "Specialized Equipment & Monitoring",
+      "Compliance & Safety Standards",
+      "Technical Support & Consultancy",
+      "Supervision & Training Support",
+    ],
+    icon: Activity,
+    image: "/services/chemical-cleaning.jpg",
+    gradient: "from-blue-500 to-blue-600",
+    bgColor: "bg-blue-50",
+    iconColor: "text-blue-600",
   },
 ];
 
@@ -400,21 +428,12 @@ export default function Services() {
                       </button>
 
                       <Link
-                        to="/contact"
+                        to={`/services/${service.slug}`}
                         className={`inline-flex items-center ${service.iconColor} font-semibold hover:opacity-80 text-xs`}
                       >
-                        Get Quote
+                        Learn More
                         <ArrowRight className="ml-1 h-3 w-3" />
                       </Link>
-                    </div>
-
-                    {/* Card Number */}
-                    <div className="absolute top-4 right-4">
-                      <div className="w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-sm">
-                        <span className="text-xs font-bold text-gray-600">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                      </div>
                     </div>
                   </div>
                 </div>

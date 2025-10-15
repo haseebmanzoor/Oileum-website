@@ -2,6 +2,7 @@
 
 const chemicalProcessOperationalSolutions = {
   title: "Chemical Process & Operational Solutions",
+  slug: "chemical-process-operational-solutions",
   shortDescription:
     "Advanced chemical process and operational support designed to enhance production efficiency, ensure plant safety, and drive sustainable operations across refinery and petrochemical facilities.",
   heroImage: "/images/services/chemical-process.jpg",

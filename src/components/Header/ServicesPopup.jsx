@@ -38,7 +38,7 @@ const services = [
     slug: "heat-exchanger-design-fabrication",
   },
   {
-    title: "Piping Engineering, Construction & Installation",
+    title: "Pipeline Engineering, Construction & Integrity Services",
     slug: "piping-services",
   },
   {

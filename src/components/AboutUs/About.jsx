@@ -80,7 +80,7 @@ export default function AboutUs() {
                 <User className="h-7 w-7 text-orange-500" />
               </div>
               <h3 className="text-3xl font-bold text-gray-900">
-                Head of Strategy
+                Message from the Head of the Oileum Company
               </h3>
             </div>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
@@ -130,8 +130,8 @@ export default function AboutUs() {
               <p className="font-bold text-lg text-gray-900">
                 Ikram Ullah Khan Wazir
               </p>
-              <p className="text-gray-600">Chief Executive Officer</p>
-              <p className="text-gray-600">Oileum</p>
+              <p className="text-gray-600">Head of Strategy</p>
+              {/* <p className="text-gray-600">Oileum</p> */}
             </div>
           </motion.div>
 
